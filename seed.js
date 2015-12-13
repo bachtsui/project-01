@@ -20,6 +20,7 @@ hairStyleList.push({
 var sampleQuotes = [];
 
 db.hairStyle.remove({}, function(err, hairStyle){
+//Makes sure all existing entries are deleted first
 
   db.hairStyle.create(hairStyleList, function(err, hairStyle){
     if (err) { return console.log("Error with creation in Seed.js: " , err); }
