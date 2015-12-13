@@ -20,6 +20,24 @@ app.use(express.static(__dirname + '/public'));
  * DATABASE *
  ************/
 
+var hairStyle = [];
+
+hairStyle.push({
+	_id: 0,
+	name: "Handlebar Mustache",
+	growthTime:"3 Months",
+	quote:"That's a fine mustache",
+	image:"images/handlebar/HB_mustache.jpg"
+});
+
+hairStyle.push({
+	_id: 1,
+	name: "Lumberjack Beard",
+	growthTime:"6 Months",
+	quote:"Wow what a manly beard",
+	image:"images/lumberjack/lumberjack.jpg"
+});
+
 /**********
  * ROUTES *
  **********/
@@ -28,8 +46,8 @@ app.use(express.static(__dirname + '/public'));
  * HTML Endpoints
  */
 
-app.get('/', function homepage (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+app.get('/', function homepage (request, response) {
+  response.sendFile(__dirname + '/views/index.html');
 });
 
 //How does this block of code work exactly? Ask
@@ -39,6 +57,12 @@ app.get('/', function homepage (req, res) {
 /*
  * JSON API Endpoints
  */
+
+app.get("/api", function api_index (request, response){
+	console.log("Serverside:" , hairStyle);
+	response.json(hairStyle);
+});
+
 
 
  /**********
