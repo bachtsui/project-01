@@ -24,6 +24,23 @@ app.use(express.static(__dirname + '/public'));
  * ROUTES *
  **********/
 
+/*
+ * HTML Endpoints
+ */
+
+app.get('/', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+//How does this block of code work exactly? Ask
+//for some guidance on it, and how to connect another
+//html page
+
+/*
+ * JSON API Endpoints
+ */
+
+
  /**********
  * SERVER *
  **********/
