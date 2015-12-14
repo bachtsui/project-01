@@ -18,13 +18,6 @@ $(document).ready(function(){
   			$("#hairStyle").append("<button class='btn btn-danger delete-hairstyle'>Delete</button>");
   			//adding a delete button
   		}
-
-        $(".delete-hairstyle").on("click", function (event){
-        console.log("You pressed the delete button");
-        var hairStyleID = $(this).name; 
-        console.log("Selected ID: " , hairStyleID);
-              //write body to check for ID
-        });
   	},
 
   	error: function(){
@@ -50,10 +43,6 @@ $(document).ready(function(){
 		data: formData,
 		success: function (response) {
 			console.log("Post Response from Server: " , response);
-			// $("#hairStyle").append("<p> Name: " + response[0].name + "</p>");
-			// $("#hairStyle").append("<p> Growth Time: " + response[0].growthTime + "</p>");
-			// $("#hairStyle").append("<p> Description: " + response[0].description + "</p>");
-      // This block of code isn't needed since, GET reads all entries to page
 		},
 		error: function() {
 			console.log("Error with /api/hairstyle Post");
@@ -64,4 +53,13 @@ $(document).ready(function(){
 	// //reset the form
   });
 
+  $("#hairStyle").on("click", ".delete-hairstyle", function (event){
+  event.preventDefault();
+  //#hairStyle exists and is always listening
+  //.delete-hairstyle is created already and now can be clicked on
+  console.log("You pressed the delete button");
+  var hairStyleID = $(this).parents; 
+  console.log("Selected ID: " , hairStyleID);
+        //write body to check for ID
+  });
 });
