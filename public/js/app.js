@@ -29,7 +29,7 @@ $(document).ready(function(){
   	event.preventDefault();
   	//prevents the default function of click
 
-	var formData = $(this).serialze();
+	  var formData = $(this).serialze();
   	//The data from the form will be serialized
   	
   	console.log("Your form data client side:" + formData);
