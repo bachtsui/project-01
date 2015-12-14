@@ -8,6 +8,8 @@ $(document).ready(function(){
   		console.log ("GET /api is working!");
   		console.log(response[0]);
   		console.log(response[0].name);
+  		console.log(response[0].growthTime);
+  		console.log(response[0].description);
   	},
 
   	error: function(){

@@ -7,8 +7,8 @@ var app = express();
 var mongoose = require("mongoose");
 var bodyParser = require('body-parser');
 
-//Umm, this does something.....
-//var db = require("./models");
+//So we made a variable here again that imports information from models
+var db = require("./models");
 
 //use body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,23 +20,6 @@ app.use(express.static(__dirname + '/public'));
  * DATABASE *
  ************/
 
-// var hairStyle = [];
-
-// hairStyle.push({
-// 	_id: 0,
-// 	name: "Handlebar Mustache",
-// 	growthTime:"3 Months",
-// 	quote:"That's a fine mustache",
-// 	image:"images/handlebar/HB_mustache.jpg"
-// });
-
-// hairStyle.push({
-// 	_id: 1,
-// 	name: "Lumberjack Beard",
-// 	growthTime:"6 Months",
-// 	quote:"Wow what a manly beard",
-// 	image:"images/lumberjack/lumberjack.jpg"
-// });
 
 /**********
  * ROUTES *
@@ -58,9 +41,11 @@ app.get('/', function homepage (request, response) {
  * JSON API Endpoints
  */
 
-app.get("/api", function api_index (request, response){
-	console.log("Serverside:" , hairStyle);
+app.get("/api", function readHairStyles (request, response){
+	db.hairStyle.find({}, function (err, hairStyle){ //Find all objects in database under hairstyle
+	console.log("Serverside GET /api:" , hairStyle);
 	response.json(hairStyle);
+	});
 });
 
 
