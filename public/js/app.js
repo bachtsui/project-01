@@ -6,10 +6,14 @@ $(document).ready(function(){
   	url:"/api",
   	success: function (response){
   		console.log ("GET /api is working!");
-  		console.log(response[0]);
-  		console.log(response[0].name);
-  		console.log(response[0].growthTime);
-  		console.log(response[0].description);
+  		for(var i = 0; i < response.length; i++){
+  			console.log(response[i].name);
+  			console.log(response[i].growthTime);
+  			console.log(response[i].description);
+  			$("#hairStyle").append("<p> Name: " + response[i].name + "</p>");
+  			$("#hairStyle").append("<p> Growth Time: " + response[i].growthTime + "</p>");
+  			$("#hairStyle").append("<p> Description: " + response[i].description + "</p>");
+  		}
   	},
 
   	error: function(){
