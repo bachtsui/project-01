@@ -25,31 +25,34 @@ $(document).ready(function(){
   });
 
   //POST NEEDS HELP!!!
-  $("#hairstyle-form").on("submit", function (event){ //POTENTIALLY WRONG SELECTOR
+  $("form").on("submit", function (event){ 
+    //POTENTIALLY WRONG SELECTOR
   	event.preventDefault();
   	//prevents the default function of click
 
-	  var formData = $(this).serialze();
+    console.log ("You clicked the button");
+
+	  var formData = $(this).serialize();
   	//The data from the form will be serialized
   	
-  	console.log("Your form data client side:" + formData);
+  	console.log("Your form data client side: " + formData);
 
 	$.ajax({
 		method: "POST",
-		url:"/api/hairstyle",
-		data:formData,
-		success: function (response){
+		url: "/api/hairstyle",
+		data: formData,
+		success: function (response) {
 			console.log("Post Response from Server: " , response);
 			// $("#hairStyle").append("<p> Name: " + response[0].name + "</p>");
 			// $("#hairStyle").append("<p> Growth Time: " + response[0].growthTime + "</p>");
 			// $("#hairStyle").append("<p> Description: " + response[0].description + "</p>");
 		},
-		error: function(){
+		error: function() {
 			console.log("Error with /api/hairstyle Post");
 		}
 	});
 
 	$(this).trigger("reset");
-	//reset the form
+	// //reset the form
   });
 });
