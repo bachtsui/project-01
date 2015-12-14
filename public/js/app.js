@@ -13,6 +13,9 @@ $(document).ready(function(){
   			$("#hairStyle").append("<p> Name: " + response[i].name + "</p>");
   			$("#hairStyle").append("<p> Growth Time: " + response[i].growthTime + "</p>");
   			$("#hairStyle").append("<p> Description: " + response[i].description + "</p>");
+
+  			$("#hairStyle").append("<button class='btn btn-danger delete-hairstyle'>Delete</button>");
+  			//adding a delete button
   		}
   	},
 
@@ -21,6 +24,7 @@ $(document).ready(function(){
   	}
   });
 
+//POST NEEDS HELP!!!
   $("#hairstyle-form").on("submit", function (event){ //POTENTIALLY WRONG SELECTOR
   	event.preventDefault();
   	//prevents the default function of click
@@ -44,7 +48,11 @@ $(document).ready(function(){
 			console.log("Error with /api/hairstyle Post");
 		}
 	});
+
+	$(this).trigger("reset");
+	//reset the form
   });
+
 
 
 });
