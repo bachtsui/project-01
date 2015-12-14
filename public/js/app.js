@@ -21,4 +21,30 @@ $(document).ready(function(){
   	}
   });
 
+  $("#hairstyle-form").on("submit", function (event){ //POTENTIALLY WRONG SELECTOR
+  	event.preventDefault();
+  	//prevents the default function of click
+
+	var formData = $(this).serialze();
+  	//The data from the form will be serialized
+  	
+  	console.log("Your form data client side:" + formData);
+
+	$.ajax({
+		method: "POST",
+		url:"/api/hairstyle",
+		data:formData,
+		success: function (response){
+			console.log("Post Response from Server: " , response);
+			// $("#hairStyle").append("<p> Name: " + response[0].name + "</p>");
+			// $("#hairStyle").append("<p> Growth Time: " + response[0].growthTime + "</p>");
+			// $("#hairStyle").append("<p> Description: " + response[0].description + "</p>");
+		},
+		error: function(){
+			console.log("Error with /api/hairstyle Post");
+		}
+	});
+  });
+
+
 });

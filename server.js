@@ -48,6 +48,16 @@ app.get("/api", function readHairStyles (request, response){
 	});
 });
 
+app.post("/api/hairstyle", function postHairStyles (request, response){
+	console.log("What was requested from client" , request.body);
+
+	db.hairStyle.create(request.body, function (err, hairstyle){
+		if(err){console.log("Here's the error for db create: ", err);}
+		console.log(hairstyle);
+		res.json(hairstyle);
+	//creates the requested body from ajax and puts it in the database
+	});
+});
 
 
  /**********
