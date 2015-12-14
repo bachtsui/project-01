@@ -24,7 +24,7 @@ $(document).ready(function(){
   	}
   });
 
-//POST NEEDS HELP!!!
+  //POST NEEDS HELP!!!
   $("#hairstyle-form").on("submit", function (event){ //POTENTIALLY WRONG SELECTOR
   	event.preventDefault();
   	//prevents the default function of click
@@ -52,7 +52,4 @@ $(document).ready(function(){
 	$(this).trigger("reset");
 	//reset the form
   });
-
-
-
 });
