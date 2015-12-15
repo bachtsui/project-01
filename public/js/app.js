@@ -52,7 +52,7 @@ $(document).ready(function(){
   //#hairStyle exists and is always listening
   //.delete-hairstyle is created already and now can be clicked on
   console.log("You pressed the delete button");
-  var hairStyleID = $(this).data.hairstyle_.id;
+  var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
   console.log("HSD: " , hairStyleID);
         //write body to check for ID
   });
