@@ -1,3 +1,7 @@
 body {
   background-color: orange; /* Sanity Check! */
 }
+
+.put-hairstyle{
+	display: none;
+}
