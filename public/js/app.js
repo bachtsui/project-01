@@ -66,7 +66,10 @@ $(document).ready(function(){
     });
   });
 
-
+  //EDIT A CURRENT HAIRSTYLING
+  $("#hairStyle").on("click", ".edit-hairstyle", function (event){
+    console.log("You pressed the edit button!");
+  });
 
 });
 
