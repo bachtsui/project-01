@@ -69,6 +69,8 @@ $(document).ready(function(){
   //EDIT A CURRENT HAIRSTYLING
   $("#hairStyle").on("click", ".edit-hairstyle", function (event){
     console.log("You pressed the edit button!");
+    var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+    console.log("HSD from Edit: " , hairStyleID);
   });
 
 });
