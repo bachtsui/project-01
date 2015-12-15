@@ -72,7 +72,7 @@ app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
 	console.log("updated id: " , request.params.id);
 	console.log("received body: ", request.body);
 
-	db.Hairstyle.findOne({_id: request.params.id}, function (err, foundHairstyle){
+	db.hairStyle.findOne({_id: request.params.id}, function (err, foundHairstyle){
 		if (err) {console.log("error" , err); }
 		foundHairstyle.name = request.body.name;
 		foundHairstyle.growthTime = request.body.growthTime;
