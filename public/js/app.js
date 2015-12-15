@@ -67,14 +67,41 @@ $(document).ready(function(){
   });
 
   //EDIT A CURRENT HAIRSTYLING
+  //Will have to move part of this code later
   $("#hairStyle").on("click", ".edit-hairstyle", function (event){
     console.log("You pressed the edit button!");
+    
     var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
     console.log("HSD from Edit: " , hairStyleID);
 
+    var $hairStyleEntry = getHairStyleEntryById(hairStyleID);
+
     $(this).parent().find('.btn').hide();
     $(this).parent().parent().find('.put-hairstyle').show();
+    //first parent moves up to span class, second parent moves to the div class container
+
+    // $(this).parent().find('.btn').toggle();
+    //doesn't quite work at the moment
+
+    //Need to replace spans with inputs
+    var hairStyleName = $hairStyleEntry.find("span.hairstyle-name").text();
+    $hairStyleEntry.find("span.hairstyle-name").html('<input class = "edit-hairstyle-name" value="' + hairStyleName + '"></input>');
+
+    //input the other information later
   });
+
+  function getHairStyleEntryById(id) {
+    return $("[data-hairstyle-id=" + id + "]");
+    //I might need some explanation on this
+  }
+
+  function handleEditHairStyleClick(event) {
+
+  }
+
+  function handleSaveChangesClick(event) {
+
+  }
 
 });
 
