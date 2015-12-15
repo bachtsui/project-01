@@ -104,7 +104,23 @@ $(document).ready(function(){
   }
 
   function handleSaveChangesClick(event) {
+    var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+    var $hairStyleEntry = getHairStyleEntryById(hairStyleID);
 
+    var data = {
+      name: $hairStyleEntry.find(".edit-hairstyle-name").val(),
+      growthTime: $hairStyleEntry.find(".edit-hairstyle-growthtime").val(),
+      description: $hairStyleEntry.find(".edit-hairstyle-description").val()
+    };
+
+    $.ajax({
+      method:"PUT",
+      url:"/api/hairstyle/" + hairStyleID,
+      data: data,
+      success: function(data) {
+        console.log(data);
+      }
+    });
   }
 
 });
