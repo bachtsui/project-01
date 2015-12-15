@@ -64,7 +64,7 @@ app.delete("/api/hairstyle/:id", function deleteHairStyle(request, response){
 	db.hairStyle.remove({_id: request.params.id}, function (err){
 	if (err){return console.log(err);}
 	console.log("Removed Entry ID= " + request.params.id + "done!");
-	res.status(200).send(); //it was ok!
+	response.status(200).send(); //it was ok!
 	});
 });
 
