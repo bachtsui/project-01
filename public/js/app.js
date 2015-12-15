@@ -87,6 +87,11 @@ $(document).ready(function(){
     var hairStyleName = $hairStyleEntry.find("span.hairstyle-name").text();
     $hairStyleEntry.find("span.hairstyle-name").html('<input class = "edit-hairstyle-name" value="' + hairStyleName + '"></input>');
 
+    var hairStyleGT = $hairStyleEntry.find("span.hairstyle-growthtime").text();
+    $hairStyleEntry.find("span.hairstyle-growthtime").html('<input class = "edit-hairstyle-growthtime" value="' + hairStyleGT + '"></input>');
+
+    var hairStyleDescription = $hairStyleEntry.find("span.hairstyle-description").text();
+    $hairStyleEntry.find("span.hairstyle-description").html('<input class = "edit-hairstyle-description" value="' + hairStyleDescription + '"></input>');
     //input the other information later
   });
 
