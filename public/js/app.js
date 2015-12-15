@@ -11,6 +11,9 @@ $(document).ready(function(){
   			console.log(response[i].name);
   			console.log(response[i].growthTime);
   			console.log(response[i].description);
+
+        $("#hairStyle").append("<div class = hair-style-id" + response[i]._id + "</div>");
+        $("#hairStyle").append("<p> HairStyleID: " + response[i]._id + "</p>");
   			$("#hairStyle").append("<p> Name: " + response[i].name + "</p>");
   			$("#hairStyle").append("<p> Growth Time: " + response[i].growthTime + "</p>");
   			$("#hairStyle").append("<p> Description: " + response[i].description + "</p>");
@@ -53,13 +56,14 @@ $(document).ready(function(){
 	// //reset the form
   });
 
+  //DELETE A CURRENT HAIRSTYLING
   $("#hairStyle").on("click", ".delete-hairstyle", function (event){
   event.preventDefault();
   //#hairStyle exists and is always listening
   //.delete-hairstyle is created already and now can be clicked on
   console.log("You pressed the delete button");
-  var hairStyleID = $(this).parents; 
-  console.log("Selected ID: " , hairStyleID);
+  var hairStyleID = $(this).data("id");
+  console.log(hairStyleID);
         //write body to check for ID
   });
 });
