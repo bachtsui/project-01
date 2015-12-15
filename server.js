@@ -59,7 +59,7 @@ app.post("/api/hairstyle", function postHairStyles (request, response){
 	});
 });
 
-app.delete("/api/hairstyle/:id", function deleteHairStyle(request, response){
+app.delete("/api/hairstyle/:id", function deleteHairStyle (request, response){
 	console.log("ID being deleted: " , request.params.id);
 	db.hairStyle.remove({_id: request.params.id}, function (err){
 	if (err){return console.log(err);}
@@ -68,6 +68,21 @@ app.delete("/api/hairstyle/:id", function deleteHairStyle(request, response){
 	});
 });
 
+app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
+	console.log("updated id: " , request.params.id);
+	console.log("received body: ", request.body);
+
+	db.Hairstyle.findOne({_id: request.params.id}, function (err, foundHairstyle){
+		if (err) {console.log("error" , err); }
+		foundHairstyle.name = request.body.name;
+		foundHairstyle.growthTime = request.body.growthTime;
+		foundHairstyle.description = request.body.description;
+		foundHairstyle.save(function(err, saved){
+			if(err){console.log("error", err); }
+			res.json(saved);
+		});
+	});
+});
 
  /**********
  * SERVER *

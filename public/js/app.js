@@ -119,6 +119,7 @@ $(document).ready(function(){
       data: data,
       success: function(data) {
         console.log(data);
+        $hairStyleEntry.replaceWith(generateHairStyleHtml(data));
       }
     });
   }
@@ -126,7 +127,7 @@ $(document).ready(function(){
 });
 
 //We'll use this function to create one hairstyle entry on the page
-function renderHairStyle (hairstyle){
+function generateHairStyleHtml(hairstyle) {
   console.log("rendering hairstyle: ", hairstyle);
 
   var hairstyleHtml =
@@ -142,5 +143,12 @@ function renderHairStyle (hairstyle){
   "</div>" +
   "<!-- end One Hairstyle Entry -->";
 
-  $("#hairStyle").append(hairstyleHtml);
+  return hairstyleHtml;
+}
+
+function renderHairStyle (hairstyle){
+  var html = generateHairStyleHtml(hairstyle);
+  console.log("rendering hairstyle: ", hairstyle);
+
+  $("#hairStyle").append(html);
 }
