@@ -92,7 +92,6 @@ $(document).ready(function(){
 
     var hairStyleDescription = $hairStyleEntry.find("span.hairstyle-description").text();
     $hairStyleEntry.find("span.hairstyle-description").html('<input class = "edit-hairstyle-description" value="' + hairStyleDescription + '"></input>');
-    //input the other information later
   });
 
   function getHairStyleEntryById(id) {
