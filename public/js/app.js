@@ -56,17 +56,18 @@ $(document).ready(function(){
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
   console.log("HSD: " , hairStyleID);
         //write body to check for ID
+    $.ajax({
+      method: 'DELETE',
+      url:("/api/hairstyle/" + hairStyleID),
+      success: function() {
+        console.log("Deleted!");
+        $("[data-hairstyle-id=" + hairStyleID + "]").remove();
+      }
+    });
+  });
 
-  $.ajax({
-    method: 'DELETE',
-    url:("/api/hairstyle/" + hairStyleID),
-    success: function() {
-      console.log("Deleted!");
-      $("[data-hairstyle-id=" + hairStyleID + "]").remove();
-    }
-  });
-  
-  });
+
+
 });
 
 //We'll use this function to create one hairstyle entry on the page
@@ -80,6 +81,7 @@ function renderHairStyle (hairstyle){
     "<span class = 'hairstyle-name'> <p> Name: " + hairstyle.name + "</p></span>" +
     "<span class = 'hairstyle-growthtime'> <p> Growth Time: " + hairstyle.growthTime + "</p></span>" +
     "<span class = 'hairstyle-description'> <p> Description: " + hairstyle.description + "</p></span>" +
+    "<span class = 'hairstyle-edit-btn'> <button class='btn btn-info edit-hairstyle'>Edit</button></span>" +
     "<span class = 'hairstyle-delete-btn'> <button class='btn btn-danger delete-hairstyle'>Delete</button></span>" +
   "</div>" +
   "<!-- end One Hairstyle Entry -->";
