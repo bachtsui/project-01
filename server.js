@@ -79,7 +79,7 @@ app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
 		foundHairstyle.description = request.body.description;
 		foundHairstyle.save(function(err, saved){
 			if(err){console.log("error", err); }
-			res.json(saved);
+			response.json(saved);
 		});
 	});
 });
