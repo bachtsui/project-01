@@ -87,6 +87,7 @@ function renderHairStyle (hairstyle){
     "<span class = 'hairstyle-growthtime'> <p> Growth Time: " + hairstyle.growthTime + "</p></span>" +
     "<span class = 'hairstyle-description'> <p> Description: " + hairstyle.description + "</p></span>" +
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-info edit-hairstyle'>Edit</button></span>" +
+    "<span class = 'hairstyle-edit-btn'> <button class='btn btn-success put-hairstyle'>Save Changes</button></span>" +
     "<span class = 'hairstyle-delete-btn'> <button class='btn btn-danger delete-hairstyle'>Delete</button></span>" +
   "</div>" +
   "<!-- end One Hairstyle Entry -->";
