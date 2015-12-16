@@ -72,25 +72,25 @@ $(document).ready(function(){
 
 
   //READS ALL QUOTES ONTO THE PAGE
-  $.ajax({
-    method:"GET",
-    url:"/api/hairstyle/ID/quote",
-    //NEED to input ID here
-    success: function (response){
-      console.log ("GET /api/hairstyle/ID/quote is working!");
+  // $.ajax({
+  //   method:"GET",
+  //   url:"/api/hairstyle/ID/quote",
+  //   //NEED to input ID here
+  //   success: function (response){
+  //     console.log ("GET /api/hairstyle/ID/quote is working!");
 
-      response.forEach(function(quote) {
-        //NEED to make a render quote function?
-        //renderHairStyle(hairstyle);
-      }); 
-    }
-  });
+  //     response.forEach(function(quote) {
+  //       //NEED to make a render quote function?
+  //       //renderHairStyle(hairstyle);
+  //     }); 
+  //   }
+  // });
 
   //CREATE A NEW QUOTE
-  $("#hairStyle").on("click", ".add-quote", function (event){
-    event.preventDefault();
-    console.log("You pressed the create quote button!!!");
-  });
+  // $("#hairStyle").on("click", ".add-quote", function (event){
+  //   event.preventDefault();
+  //   console.log("You pressed the create quote button!!!");
+  // });
 
 });
 
@@ -149,7 +149,11 @@ function handleSaveChangesClick(event) {
 function buildQuotesHtml(quotes){
   console.log("rendering quotes ", quotes);
 
-  var quotesHtml = 
+  var quotesHtml = "";
+
+  quotes.forEach(function (quotes, index){ 
+
+  quotesHtml +=  
   "<!-- One Quote Entry --->" +
   
   "<span class = 'quote-body'>" + quotes.body + "</span>" +  
@@ -158,7 +162,7 @@ function buildQuotesHtml(quotes){
   "<span class = 'quote-date'>" + quotes.date + "</span>" + 
 
   "<!-- End Quote Entry --->";
-
+  });
   return quotesHtml;
 }
 
