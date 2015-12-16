@@ -19,6 +19,22 @@ hairStyleList.push({
 
 var sampleQuotes = [];
 
+sampleQuotes.push ({ 
+	body: "What a handsome beard!",
+	voteCounter:0,
+	author: "Mr. X",
+	date: "December 1st, 2015",
+});
+
+sampleQuotes.push ({ 
+	body: "I feel the beard",
+	voteCounter:0,
+	author: "Mr. Y",
+	date: "December 3rd, 1998",
+});
+
+
+
 db.hairStyle.remove({}, function(err, hairStyle){
 //Makes sure all existing entries are deleted first
 
