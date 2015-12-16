@@ -151,7 +151,12 @@ function buildQuotesHtml(quotes){
 
   var quotesHtml = "";
 
-  quotes.forEach(function (quotes, index){ 
+  //hairstyle.quotes is an array that contains objects inside
+  //the array needs to be iterated through
+  //grab the approriate key from the quote object
+  //this should read the quotes onto the page
+
+  quotes.forEach(function (quotes){ 
 
   quotesHtml +=  
   "<!-- One Quote Entry --->" +
