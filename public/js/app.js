@@ -1,7 +1,7 @@
 $(document).ready(function(){
   console.log('Sanity Check: app.js loaded!');
 
-  //READS ALL ENTRIES ONTO THE PAGE
+  //READS ALL HAIRSTYLE ENTRIES ONTO THE PAGE
   $.ajax({
   	method:"GET",
   	url:"/api",
@@ -18,7 +18,7 @@ $(document).ready(function(){
   	}
   });
 
-  //CREATE A NEW HAIRSTYLING
+  //CREATE A NEW HAIRSTYLE ENTRY
   $("#hairstyle-form").on("submit", function (event){ 
   	event.preventDefault();
   	//prevents the default function of click
@@ -70,6 +70,21 @@ $(document).ready(function(){
   $("#hairStyle").on("click", ".edit-hairstyle", handleEditHairStyleClick);
   $("#hairStyle").on("click", ".put-hairstyle", handleSaveChangesClick);
 
+
+  //READS ALL QUOTES ONTO THE PAGE
+  $.ajax({
+    method:"GET",
+    url:"/api/hairstyle/ID/quote",
+    //NEED to input ID here
+    success: function (response){
+      console.log ("GET /api/hairstyle/ID/quote is working!");
+
+      response.forEach(function(quote) {
+      //NEED to make a render quote function?
+        renderHairStyle(hairstyle);
+      }); 
+    }
+  });
 
   //CREATE A NEW QUOTE
   $("#hairStyle").on("click", ".add-quote", function (event){
@@ -147,9 +162,9 @@ function buildQuotesHtml(quotes){
   return quotesHtml;
 }
 
-function handleNewQuoteButtonClick(){
+// function handleNewQuoteButtonClick(){
 
-}
+// }
 
 //We'll use this function to create one hairstyle entry on the page
 function generateHairStyleHtml(hairstyle) {
