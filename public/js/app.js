@@ -147,16 +147,17 @@ function buildQuotesHtml(quotes){
 
   quotes.forEach(function (quotes){ 
 
-  quotesHtml +=  
-  "<!-- One Quote Entry --->" +
-  
-  "----------------------------" + "<br>" +
-  "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
-  "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
-  "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
-  "Date: <span class = 'quote-date'>" + quotes.date + "</span>" + "<br>" + 
+    quotesHtml +=  
+    "<!-- One Quote Entry --->" +
+    
+    "----------------------------" + "<br>" +
+    
+    "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
+    "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
+    "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
+    "Date: <span class = 'quote-date'>" + quotes.date + "</span>" + "<br>" + 
 
-  "<!-- End Quote Entry --->";
+    "<!-- End Quote Entry --->";
   });
   return quotesHtml;
 }
@@ -181,6 +182,10 @@ function generateHairStyleHtml(hairstyle) {
 
     buildQuotesHtml(hairstyle.quotes) +
 
+    "<!-- End of Quotes -->" +
+
+    "<!-- Quotes Forms -->" +
+
     "<form class='form-group' id='quotes-form'>" +
       "<label>" +
             "Body: <textarea input type='text' id= 'quotebody' name ='body'></textarea>" + "<br>" +
@@ -192,7 +197,7 @@ function generateHairStyleHtml(hairstyle) {
 
     "<span class = 'quotes-create-btn'> <button class='btn btn-primary add-quote'>Add Quote</button></span>" +
 
-    "<!-- End of Quotes -->" +
+    "<!-- End of Quotes Forms -->" +
 
     "<!-- HairStyle Buttons-->" +
 
