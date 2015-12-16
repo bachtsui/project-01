@@ -17,6 +17,8 @@ hairStyleList.push({
 	description: "Justin wears this beard"
 });
 
+
+//Hard coded Quotes list.
 var sampleQuotes = [];
 
 sampleQuotes.push ({ 
@@ -33,6 +35,9 @@ sampleQuotes.push ({
 	date: "December 3rd, 1998",
 });
 
+hairStyleList.forEach(function(hairstyle){
+	hairstyle.quotes = sampleQuotes;
+});
 
 
 db.hairStyle.remove({}, function(err, hairStyle){
