@@ -72,15 +72,6 @@ $(document).ready(function(){
 
 
   //CREATE A NEW QUOTE
-  // $("#hairStyle").on("click", ".add-quote", function (event){
-  //   event.preventDefault();
-
-  //   console.log("You pressed the create quote button!!!");
-
-  //   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
-  //   console.log("HSD from ADD QUOTE: " , hairStyleID);
-  // });
-
   $("#hairStyle").on("click", ".add-quote", handleNewQuoteButtonClick);
 
 });
@@ -182,7 +173,7 @@ function handleNewQuoteButtonClick(){
     date: quoteDate
   };
 
-  var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quote';
+  var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quotes';
   console.log('quotes being added to ' , quoteUrl, 'with data ', quoteData);
 
   $.ajax({
@@ -193,7 +184,7 @@ function handleNewQuoteButtonClick(){
       console.log("Post Quote Response from Server: " , response);
     },
     error: function() {
-      console.log("Error with /api/hairstyle/ID/quote Post");
+      console.log("Error with /api/hairstyle/ID/quotes Post");
     }
   });
 }

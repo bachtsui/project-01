@@ -96,6 +96,22 @@ app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
 // 	});
 // });
 
+
+app.post('/api/hairstyle/:hairstyleId/quotes', function quotesCreate(request, response){
+	console.log('quote body', request.body);
+
+	db.hairStyle.findOne({_id: request.params.hairstyleId}, function (err, hairstyle){
+		if (err) { console.log('error', err); }
+
+		var quote = new db.Quote(request.body);
+		hairstyle.quotes.push(quote);
+		hairstyle.save(function(err, savedHairStyle){
+			if (err) { console.log('error', err); }
+			console.log('hairstyle with new quote: ', savedHairStyle);
+			response.json(quote);
+		});
+	});
+});
  /**********
  * SERVER *
  **********/
