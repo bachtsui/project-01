@@ -70,6 +70,13 @@ $(document).ready(function(){
   $("#hairStyle").on("click", ".edit-hairstyle", handleEditHairStyleClick);
   $("#hairStyle").on("click", ".put-hairstyle", handleSaveChangesClick);
 
+
+  //CREATE A NEW QUOTE
+  $("#hairStyle").on("click", ".add-quote", function (event){
+    event.preventDefault();
+    console.log("You pressed the create quote button!!!");
+  });
+
 });
 
 function getHairStyleEntryById(id) {
@@ -140,6 +147,10 @@ function buildQuotesHtml(quotes){
   return quotesHtml;
 }
 
+function handleNewQuoteButtonClick(){
+
+}
+
 //We'll use this function to create one hairstyle entry on the page
 function generateHairStyleHtml(hairstyle) {
   console.log("rendering hairstyle: ", hairstyle);
@@ -156,13 +167,15 @@ function generateHairStyleHtml(hairstyle) {
 
     buildQuotesHtml(hairstyle.quotes) +
 
+    "<span class = 'quotes-create-btn'> <button class='btn btn-primary add-quote'>Add Quote</button></span>" +
+
     "<!-- End of Quotes -->" +
 
     "<!-- Buttons-->" +
 
-    "<span class = 'hairstyle-edit-btn'> <button class='btn btn-info edit-hairstyle'>Edit</button></span>" +
+    "<span class = 'hairstyle-edit-btn'> <button class='btn btn-info edit-hairstyle'>Edit Hairstyle</button></span>" +
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-success put-hairstyle'>Save Changes</button></span>" +
-    "<span class = 'hairstyle-delete-btn'> <button class='btn btn-danger delete-hairstyle'>Delete</button></span>" +
+    "<span class = 'hairstyle-delete-btn'> <button class='btn btn-danger delete-hairstyle'>Delete Hairstyle</button></span>" +
 
     "<!--End of Buttons-->" +
 
