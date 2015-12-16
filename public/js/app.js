@@ -72,14 +72,16 @@ $(document).ready(function(){
 
 
   //CREATE A NEW QUOTE
-  $("#hairStyle").on("click", ".add-quote", function (event){
-    event.preventDefault();
+  // $("#hairStyle").on("click", ".add-quote", function (event){
+  //   event.preventDefault();
 
-    console.log("You pressed the create quote button!!!");
+  //   console.log("You pressed the create quote button!!!");
 
-    var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
-    console.log("HSD from ADD QUOTE: " , hairStyleID);
-  });
+  //   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+  //   console.log("HSD from ADD QUOTE: " , hairStyleID);
+  // });
+
+  $("#hairStyle").on("click", ".add-quote", handleNewQuoteButtonClick);
 
 });
 
@@ -163,7 +165,11 @@ function buildQuotesHtml(quotes){
 }
 
 function handleNewQuoteButtonClick(){
+
+  console.log("Quote Button was pressed!");
+
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+  
   var quoteBody = $('#quotebody').val();
   var quoteVoteCounter = $('#quotevotecounter').val();
   var quoteAuthor = $('#quoteauthor').val();
