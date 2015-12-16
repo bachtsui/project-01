@@ -39,6 +39,7 @@ hairStyleList.forEach(function(hairstyle){
 	hairstyle.quotes = sampleQuotes;
 });
 
+//This worked apparently!
 
 db.hairStyle.remove({}, function(err, hairStyle){
 //Makes sure all existing entries are deleted first
