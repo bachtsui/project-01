@@ -49,7 +49,7 @@ app.get("/api", function readHairStyles (request, response){
 });
 
 app.post("/api/hairstyle", function postHairStyles (request, response){
-	console.log("What was requested from client" , request.body);
+	//console.log("What was requested from client" , request.body);
 
 	db.hairStyle.create(request.body, function (err, hairstyle){
 		if(err){console.log("Here's the error for db create: ", err);}
@@ -60,7 +60,8 @@ app.post("/api/hairstyle", function postHairStyles (request, response){
 });
 
 app.delete("/api/hairstyle/:id", function deleteHairStyle (request, response){
-	console.log("ID being deleted: " , request.params.id);
+	//console.log("ID being deleted: " , request.params.id);
+	
 	db.hairStyle.remove({_id: request.params.id}, function (err){
 	if (err){return console.log(err);}
 	console.log("Removed Entry ID= " + request.params.id + "done!");
@@ -69,8 +70,8 @@ app.delete("/api/hairstyle/:id", function deleteHairStyle (request, response){
 });
 
 app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
-	console.log("updated id: " , request.params.id);
-	console.log("received body: ", request.body);
+	//console.log("updated id: " , request.params.id);
+	//console.log("received body: ", request.body);
 
 	db.hairStyle.findOne({_id: request.params.id}, function (err, foundHairstyle){
 		if (err) {console.log("error" , err); }

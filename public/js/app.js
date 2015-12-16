@@ -125,13 +125,15 @@ function handleSaveChangesClick(event) {
 }
 
 function buildQuotesHtml(quotes){
+  console.log("rendering quotes ", quotes);
+  
   var quotesHtml = 
   "<!-- One Quote Entry --->" +
   
-  "<span class = 'quote-body'>" + "</span>" +  
-  "<span class = 'quote-voteCounter'>" + "</span>" +  
-  "<span class = 'quote-author'>" + "</span>" + 
-  "<span class = 'quote-date'>" + "</span>" + 
+  "<span class = 'quote-body'>" + quotes.body + "</span>" +  
+  "<span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  
+  "<span class = 'quote-author'>" + quotes.author + "</span>" + 
+  "<span class = 'quote-date'>" + quotes.date + "</span>" + 
 
   "<!-- End Quote Entry --->";
 }
@@ -145,14 +147,17 @@ function generateHairStyleHtml(hairstyle) {
   "<div class = 'hairstyle-box' data-hairstyle-id = '" + hairstyle._id + "'>" +
 
     "Name: <span class = 'hairstyle-name'>" + hairstyle.name + "</span>" + "<br>" +
-    
     "Growth Time: <span class = 'hairstyle-growthtime'>" + hairstyle.growthTime + "</span>" + "<br>" +
-
     "Description: <span class = 'hairstyle-description'>" + hairstyle.description + "</span>" + "<br>" +
+
+    "<!-- Buttons-->" +
 
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-info edit-hairstyle'>Edit</button></span>" +
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-success put-hairstyle'>Save Changes</button></span>" +
     "<span class = 'hairstyle-delete-btn'> <button class='btn btn-danger delete-hairstyle'>Delete</button></span>" +
+
+    "<!--End of Buttons-->" +
+
   "</div>" +
   "<!-- end One Hairstyle Entry -->";
 
