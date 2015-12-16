@@ -181,6 +181,15 @@ function generateHairStyleHtml(hairstyle) {
 
     buildQuotesHtml(hairstyle.quotes) +
 
+    "<form class='form-group' id='quotes-form'>" +
+      "<label>" +
+            "Body: <textarea input type='text' id= 'quotebody' name ='body'></textarea>" + "<br>" +
+            "Vote Counter: <input type='number' id= 'quotevotecounter' name ='voteCounter'>" + "<br>" +
+            "Author: <input type='text' id= 'quoteauthor' name ='author'>" + "<br>" +
+            "Date: <input type='text' id= 'quotedate' name ='date'>" + "<br>" +
+      "</label>" +
+    "</form>" +
+
     "<span class = 'quotes-create-btn'> <button class='btn btn-primary add-quote'>Add Quote</button></span>" +
 
     "<!-- End of Quotes -->" +
