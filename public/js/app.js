@@ -161,10 +161,11 @@ function buildQuotesHtml(quotes){
   quotesHtml +=  
   "<!-- One Quote Entry --->" +
   
-  "<span class = 'quote-body'>" + quotes.body + "</span>" +  
-  "<span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  
-  "<span class = 'quote-author'>" + quotes.author + "</span>" + 
-  "<span class = 'quote-date'>" + quotes.date + "</span>" + 
+  "----------------------------" + "<br>" +
+  "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
+  "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
+  "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
+  "Date: <span class = 'quote-date'>" + quotes.date + "</span>" + "<br>" + 
 
   "<!-- End Quote Entry --->";
   });
