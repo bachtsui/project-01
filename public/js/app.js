@@ -126,7 +126,7 @@ function handleSaveChangesClick(event) {
 
 function buildQuotesHtml(quotes){
   console.log("rendering quotes ", quotes);
-  
+
   var quotesHtml = 
   "<!-- One Quote Entry --->" +
   
@@ -136,6 +136,8 @@ function buildQuotesHtml(quotes){
   "<span class = 'quote-date'>" + quotes.date + "</span>" + 
 
   "<!-- End Quote Entry --->";
+
+  return quotesHtml;
 }
 
 //We'll use this function to create one hairstyle entry on the page
@@ -149,6 +151,12 @@ function generateHairStyleHtml(hairstyle) {
     "Name: <span class = 'hairstyle-name'>" + hairstyle.name + "</span>" + "<br>" +
     "Growth Time: <span class = 'hairstyle-growthtime'>" + hairstyle.growthTime + "</span>" + "<br>" +
     "Description: <span class = 'hairstyle-description'>" + hairstyle.description + "</span>" + "<br>" +
+
+    "<!-- Quotes -->" +
+
+    buildQuotesHtml(hairstyle.quotes) +
+
+    "<!-- End of Quotes -->" +
 
     "<!-- Buttons-->" +
 
