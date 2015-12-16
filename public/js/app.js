@@ -71,21 +71,6 @@ $(document).ready(function(){
   $("#hairStyle").on("click", ".put-hairstyle", handleSaveChangesClick);
 
 
-  //READS ALL QUOTES ONTO THE PAGE
-  // $.ajax({
-  //   method:"GET",
-  //   url:"/api/hairstyle/ID/quote",
-  //   //NEED to input ID here
-  //   success: function (response){
-  //     console.log ("GET /api/hairstyle/ID/quote is working!");
-
-  //     response.forEach(function(quote) {
-  //       //NEED to make a render quote function?
-  //       //renderHairStyle(hairstyle);
-  //     }); 
-  //   }
-  // });
-
   //CREATE A NEW QUOTE
   $("#hairStyle").on("click", ".add-quote", function (event){
     event.preventDefault();
