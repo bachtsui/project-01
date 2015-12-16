@@ -134,10 +134,13 @@ function generateHairStyleHtml(hairstyle) {
   var hairstyleHtml =
   "<!-- One Hairstyle Entry -->" +
   "<div class = 'hairstyle-box' data-hairstyle-id = '" + hairstyle._id + "'>" +
-    "<span class = 'hair-style-id'> <p> HairstyleID: " + hairstyle._id + "</p></span>" +
-    "<span class = 'hairstyle-name'> <p> Name: " + hairstyle.name + "</p></span>" +
-    "<span class = 'hairstyle-growthtime'> <p> Growth Time: " + hairstyle.growthTime + "</p></span>" +
-    "<span class = 'hairstyle-description'> <p> Description: " + hairstyle.description + "</p></span>" +
+  
+    "Name: <span class = 'hairstyle-name'>" + hairstyle.name + "</span>" + "<br>" +
+    
+    "Growth Time: <span class = 'hairstyle-growthtime'>" + hairstyle.growthTime + "</span>" + "<br>" +
+
+    "Description: <span class = 'hairstyle-description'>" + hairstyle.description + "</span>" + "<br>" +
+
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-info edit-hairstyle'>Edit</button></span>" +
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-success put-hairstyle'>Save Changes</button></span>" +
     "<span class = 'hairstyle-delete-btn'> <button class='btn btn-danger delete-hairstyle'>Delete</button></span>" +
