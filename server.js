@@ -88,14 +88,6 @@ app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
 
 ////////////QUOTE API ENDPOINTS////////////////
 
-// app.get("/api/hairstyle/:id/quote", function readQuotes (request, response){
-// 	db.hairStyle.quotes.find({_id: request.params.id}, function (err, quotes){ 
-// 	//Finds quote by ID, but does it capture all the quotes?
-// 	console.log("Serverside GET /api/hairstyle/:id/quote: " , quotes);
-// 	response.json(quotes);
-// 	});
-// });
-
 
 app.post('/api/hairstyle/:hairstyleId/quotes', function quotesCreate(request, response){
 	console.log('quote body', request.body);

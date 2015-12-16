@@ -166,6 +166,8 @@ function handleNewQuoteButtonClick(){
   var quoteAuthor = $('#quoteauthor').val();
   var quoteDate = $('quotedate').val();
 
+  console.log (quoteBody);
+
   var quoteData = {
     body:quoteBody,
     voteCounter:quoteVoteCounter,
