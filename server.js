@@ -41,6 +41,7 @@ app.get('/', function homepage (request, response) {
  * JSON API Endpoints
  */
 
+////////////HAIRSTYLE API ENDPOINTS////////////////
 app.get("/api", function readHairStyles (request, response){
 	db.hairStyle.find({}, function (err, hairStyle){ //Find all objects in database under hairstyle
 	console.log("Serverside GET /api:" , hairStyle);
@@ -82,6 +83,16 @@ app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
 			if(err){console.log("error", err); }
 			response.json(saved);
 		});
+	});
+});
+
+////////////QUOTE API ENDPOINTS////////////////
+
+app.get("/api/hairstyle/:id/quote", function readQuotes (request, response){
+	db.hairStyle.quotes.find({_id: request.params.id}, function (err, quotes){ 
+	//Finds quote by ID, but does it capture all the quotes?
+	console.log("Serverside GET /api/hairstyle/:id/quote: " , quotes);
+	response.json(quotes);
 	});
 });
 

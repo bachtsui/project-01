@@ -80,8 +80,8 @@ $(document).ready(function(){
       console.log ("GET /api/hairstyle/ID/quote is working!");
 
       response.forEach(function(quote) {
-      //NEED to make a render quote function?
-        renderHairStyle(hairstyle);
+        //NEED to make a render quote function?
+        //renderHairStyle(hairstyle);
       }); 
     }
   });
