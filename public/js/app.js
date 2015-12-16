@@ -67,9 +67,7 @@ $(document).ready(function(){
   });
 
   //EDIT A CURRENT HAIRSTYLING
-  //Will have to move part of this code later
   $("#hairStyle").on("click", ".edit-hairstyle", handleEditHairStyleClick);
-
   $("#hairStyle").on("click", ".put-hairstyle", handleSaveChangesClick);
 
 });
@@ -126,6 +124,17 @@ function handleSaveChangesClick(event) {
   });
 }
 
+function buildQuotesHtml(quotes){
+  var quotesHtml = 
+  "<!-- One Quote Entry --->" +
+  
+  "<span class = 'quote-body'>" + "</span>" +  
+  "<span class = 'quote-voteCounter'>" + "</span>" +  
+  "<span class = 'quote-author'>" + "</span>" + 
+  "<span class = 'quote-date'>" + "</span>" + 
+
+  "<!-- End Quote Entry --->";
+}
 
 //We'll use this function to create one hairstyle entry on the page
 function generateHairStyleHtml(hairstyle) {
@@ -134,7 +143,7 @@ function generateHairStyleHtml(hairstyle) {
   var hairstyleHtml =
   "<!-- One Hairstyle Entry -->" +
   "<div class = 'hairstyle-box' data-hairstyle-id = '" + hairstyle._id + "'>" +
-  
+
     "Name: <span class = 'hairstyle-name'>" + hairstyle.name + "</span>" + "<br>" +
     
     "Growth Time: <span class = 'hairstyle-growthtime'>" + hairstyle.growthTime + "</span>" + "<br>" +
