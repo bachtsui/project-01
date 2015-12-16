@@ -87,10 +87,14 @@ $(document).ready(function(){
   // });
 
   //CREATE A NEW QUOTE
-  // $("#hairStyle").on("click", ".add-quote", function (event){
-  //   event.preventDefault();
-  //   console.log("You pressed the create quote button!!!");
-  // });
+  $("#hairStyle").on("click", ".add-quote", function (event){
+    event.preventDefault();
+
+    console.log("You pressed the create quote button!!!");
+
+    var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+    console.log("HSD from ADD QUOTE: " , hairStyleID);
+  });
 
 });
 
@@ -196,13 +200,13 @@ function generateHairStyleHtml(hairstyle) {
 
     "<!-- End of Quotes -->" +
 
-    "<!-- Buttons-->" +
+    "<!-- HairStyle Buttons-->" +
 
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-info edit-hairstyle'>Edit Hairstyle</button></span>" +
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-success put-hairstyle'>Save Changes</button></span>" +
     "<span class = 'hairstyle-delete-btn'> <button class='btn btn-danger delete-hairstyle'>Delete Hairstyle</button></span>" +
 
-    "<!--End of Buttons-->" +
+    "<!--End of Hairstyle Buttons-->" +
 
   "</div>" +
   "<!-- end One Hairstyle Entry -->";
