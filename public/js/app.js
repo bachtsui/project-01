@@ -151,7 +151,7 @@ function buildQuotesHtml(quotes){
     "<!-- One Quote Entry --->" +
     
     "----------------------------" + "<br>" +
-    
+
     "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
     "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
     "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
@@ -162,9 +162,35 @@ function buildQuotesHtml(quotes){
   return quotesHtml;
 }
 
-// function handleNewQuoteButtonClick(){
+function handleNewQuoteButtonClick(){
+  var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+  var quoteBody = $('#quotebody').val();
+  var quoteVoteCounter = $('#quotevotecounter').val();
+  var quoteAuthor = $('#quoteauthor').val();
+  var quoteDate = $('quotedate').val();
 
-// }
+  var quoteData = {
+    body:quoteBody,
+    voteCounter:quoteVoteCounter,
+    author: quoteAuthor,
+    date: quoteDate
+  };
+
+  var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quote';
+  console.log('quotes being added to ' , quoteUrl, 'with data ', quoteData);
+
+  $.ajax({
+    method: "POST",
+    url: quoteUrl,
+    data: quoteData,
+    success: function (response) {
+      console.log("Post Quote Response from Server: " , response);
+    },
+    error: function() {
+      console.log("Error with /api/hairstyle/ID/quote Post");
+    }
+  });
+}
 
 //We'll use this function to create one hairstyle entry on the page
 function generateHairStyleHtml(hairstyle) {
