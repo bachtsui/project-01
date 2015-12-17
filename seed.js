@@ -35,15 +35,15 @@ sampleQuotes.push ({
 	date: "December 3rd, 1998",
 });
 
-var sampleImages = [];
+var samplePics = [];
 
-sampleImage.push({
+samplePics.push({
 	url: "http://vignette3.wikia.nocookie.net/rickandmorty/images/7/70/Snuffles-helmet.jpg/revision/latest?cb=20131212193614",
 	caption: "Nice picture!",
 	date:"December 1, 2015",
 });
 
-sampleImage.push({
+samplePics.push({
 	url: "http://d55ohm6038bug.cloudfront.net/June2014-Bojack/images/bojack_contact.png",
 	caption: "What is this?",
 	date:"February 25, 2013",
@@ -52,7 +52,7 @@ sampleImage.push({
 
 hairStyleList.forEach(function(hairstyle){
 	hairstyle.quotes = sampleQuotes;
-	hairstyle.pics = sampleImages;
+	hairstyle.pics = samplePics;
 });
 
 
