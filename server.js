@@ -107,17 +107,25 @@ app.post('/api/hairstyle/:hairstyleId/quotes', function createQuote (request, re
 	});
 });
 
-app.delete("/api/hairstyle/:hairstyleId/quotes/:quoteId", function deleteQuote (request, response){
+app.delete("/api/hairstyle/:hairstyleId/quotes/:id", function deleteQuote (request, response){
 	//console.log("ID being deleted: " , request.params.id);
 	var hairStyleId = request.params.hairstyleId;
-	var quoteId = request.params.quoteId;
+	var quoteId = request.params.id;
 
 	console.log(request.params);
 	console.log("HSID from app.delete" , hairStyleId);
 	console.log("QuoteID from app.delete" , quoteId);
 
 	db.hairStyle.findOne({_id: hairStyleId}, function (err, foundHairStyle){
+		if (err) {console.log(err);}
+		var foundQuote = foundHairStyle.quotes.id(quoteId);
 
+		foundQuote.remove();
+
+		foundHairStyle.save(function(err , saved){
+			if(err){console.log('error', err);}
+			response.json(saved);
+		}); 
 	});
 
 	// db.hairStyle.quotes.remove({_id: request.params.id}, function (err){
