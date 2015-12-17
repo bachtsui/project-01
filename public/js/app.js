@@ -20,6 +20,9 @@ $(document).ready(function(){
   //DELETE A QUOTE
   $("#hairStyle").on("click", ".delete-quote", handleDeleteQuoteButton);
 
+  //CREATE A PICTURE
+  $("#hairStyle").on("click", ".add-picture", handleNewPicButtonClick);
+
 });
 
 //////////HairStyle Functions//////////////
@@ -329,7 +332,7 @@ function generateHairStyleHtml(hairstyle) {
       "<label>" +
           "Picture URL: <input type='text' class= 'picturebody' name ='url'></textarea><br>" +
       "</label>" + "<br>" +
-      "<span class = 'picture-create-btn'> <button class='btn btn-primary add-picture'>Add Picture</button></span>" +
+      "<span class = 'picture-create-btn'> <button class='btn btn-success add-picture'>Add Picture</button></span>" +
     "</form>" +
 
     "<!-- End of Picture Form -->" +
