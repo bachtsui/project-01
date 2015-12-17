@@ -270,18 +270,18 @@ function handleNewPicButtonClick(event){
   var pictureUrl = '/api/hairstyle/' + hairStyleID + '/pictures';
   console.log('pictures being added to ' , pictureUrl, 'with data ', pictureData);
 
-  // $.ajax({
-  //   method: "POST",
-  //   url: pictureUrl,
-  //   data: pictureData,
-  //   success: function (response) {
-  //     console.log("Post Picture Response from Server: " , response);
-  //   },
-  //   error: function() {
-  //     console.log("Error with /api/hairstyle/ID/pictures Post");
-  //   }
-  // });
-  // $(this).trigger("reset");
+  $.ajax({
+    method: "POST",
+    url: pictureUrl,
+    data: pictureData,
+    success: function (response) {
+      console.log("Post Picture Response from Server: " , response);
+    },
+    error: function() {
+      console.log("Error with /api/hairstyle/ID/pictures Post");
+    }
+  });
+  $(this).trigger("reset");
 }
 
 //////////////////////////////////
