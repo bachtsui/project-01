@@ -154,9 +154,10 @@ function buildQuotesHtml(quotes){
     quotesHtml +=  
     "<!-- One Quote Entry --->" +
     
-    "----------------------------" + "<br>" +
+    
     "<div class = 'quote-box' data-quote-id = '" + quotes._id + "'>" +
 
+      "----------------------------" + "<br>" +
       "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
       "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
       "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
@@ -201,24 +202,24 @@ function handleNewQuoteButtonClick(event){
 
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
   
-  var quoteData = $(this).parents('form').serialize();
+  var quoteData = $("form#" + hairStyleID).serialize();
 
-  console.log(quoteData);
+  console.log("This is the quote data!: " , quoteData);
 
   var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quotes';
   console.log('quotes being added to ' , quoteUrl, 'with data ', quoteData);
 
-  // $.ajax({
-  //   method: "POST",
-  //   url: quoteUrl,
-  //   data: quoteData,
-  //   success: function (response) {
-  //     console.log("Post Quote Response from Server: " , response);
-  //   },
-  //   error: function() {
-  //     console.log("Error with /api/hairstyle/ID/quotes Post");
-  //   }
-  // });
+  $.ajax({
+    method: "POST",
+    url: quoteUrl,
+    data: quoteData,
+    success: function (response) {
+      console.log("Post Quote Response from Server: " , response);
+    },
+    error: function() {
+      console.log("Error with /api/hairstyle/ID/quotes Post");
+    }
+  });
 
   //$(this).trigger("reset");
   //Is this the right place for trigger reset?
@@ -249,7 +250,7 @@ function generateHairStyleHtml(hairstyle) {
 
     "<!-- Quotes Forms -->" +
 
-    "<form class='form-group' id='quotes-form'>" +
+    "<form class='form-group quotes-form' data-hairstyle-id ='" + hairstyle._id + "'>" +
       "<label>" +
             "Body: <textarea input type='text' id= 'quotebody' name ='body'></textarea>" + "<br>" +
             "Vote Counter: <input type='number' id= 'quotevotecounter' name ='voteCounter'>" + "<br>" +
