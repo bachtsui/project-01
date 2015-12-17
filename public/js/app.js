@@ -5,51 +5,10 @@ $(document).ready(function(){
   readAllHairStyleEntry();
 
   //CREATE A NEW HAIRSTYLE ENTRY
-  $("#hairstyle-form").on("submit", function (event){ 
-  	event.preventDefault();
-  	//prevents the default function of click
-
-    console.log ("You clicked the button");
-
-	  var formData = $(this).serialize();
-  	//The data from the form will be serialized
-  	
-  	console.log("Your form data client side: " + formData);
-
-	$.ajax({
-		method: "POST",
-		url: "/api/hairstyle",
-		data: formData,
-		success: function (response) {
-			console.log("Post Response from Server: " , response);
-		},
-		error: function() {
-			console.log("Error with /api/hairstyle Post");
-		}
-	});
-
-	$(this).trigger("reset");
-  });
+  $("#hairstyle-form").on("submit", createHairStyleEntry);
 
   //DELETE A CURRENT HAIRSTYLING
-  $("#hairStyle").on("click", ".delete-hairstyle", function (event){
-  event.preventDefault();
-  //#hairStyle exists and is always listening
-  //.delete-hairstyle is created already and now can be clicked on
-  
-  console.log("You pressed the delete button");
-  var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
-  console.log("HSD: " , hairStyleID);
-        //write body to check for ID
-    $.ajax({
-      method: 'DELETE',
-      url:("/api/hairstyle/" + hairStyleID),
-      success: function() {
-        console.log("Deleted!");
-        $("[data-hairstyle-id=" + hairStyleID + "]").remove();
-      }
-    });
-  });
+  $("#hairStyle").on("click", ".delete-hairstyle", deleteHairStyleEntry);
 
   //EDIT A CURRENT HAIRSTYLING
   $("#hairStyle").on("click", ".edit-hairstyle", handleEditHairStyleClick);
@@ -86,6 +45,48 @@ function readAllHairStyleEntry() {
       console.log("Error with /api GET");
     }
   });
+}
+
+function createHairStyleEntry() {
+    event.preventDefault();
+    //prevents the default function of click
+
+    console.log ("You clicked the button");
+
+    var formData = $(this).serialize();
+    //The data from the form will be serialized
+    
+    console.log("Your form data client side: " + formData);
+
+  $.ajax({
+    method: "POST",
+    url: "/api/hairstyle",
+    data: formData,
+    success: function (response) {
+      console.log("Post Response from Server: " , response);
+    },
+    error: function() {
+      console.log("Error with /api/hairstyle Post");
+    }
+  });
+  $(this).trigger("reset");
+}
+
+function deleteHairStyleEntry() {
+  event.preventDefault();
+  
+  console.log("You pressed the delete button");
+  var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+  console.log("HSD: " , hairStyleID);
+  
+    $.ajax({
+      method: 'DELETE',
+      url:("/api/hairstyle/" + hairStyleID),
+      success: function() {
+        console.log("Deleted!");
+        $("[data-hairstyle-id=" + hairStyleID + "]").remove();
+      }
+    });
 }
 
 function handleEditHairStyleClick(event) {
