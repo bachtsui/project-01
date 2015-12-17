@@ -90,7 +90,6 @@ app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
 
 ////////////QUOTE API ENDPOINTS////////////////
 
-
 app.post('/api/hairstyle/:hairstyleId/quotes', function createQuote (request, response){
 	console.log('quote body', request.body);
 
@@ -127,12 +126,6 @@ app.delete("/api/hairstyle/:hairstyleId/quotes/:id", function deleteQuote (reque
 			response.json(saved);
 		}); 
 	});
-
-	// db.hairStyle.quotes.remove({_id: request.params.id}, function (err){
-	// if (err){return console.log(err);}
-	// console.log("Removed Entry ID= " + request.params.id + "done!");
-	// response.status(200).send(); //it was ok!
-	// });
 });
  /**********
  * SERVER *
