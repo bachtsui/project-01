@@ -253,6 +253,38 @@ function buildPicHtml(pictures){
   return picturesHtml;
 }
 
+function handleNewPicButtonClick(event){
+  event.preventDefault();
+
+  console.log("Picture Button was pressed!");
+
+  var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+
+  var pictureData = $(this).parents('.quotes-form').serialize();
+  ///////////////////////
+  console.log("QuoteData: ", quoteData);
+
+  console.log("This is the quote data!: " , quoteData);
+
+  var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quotes';
+  console.log('quotes being added to ' , quoteUrl, 'with data ', quoteData);
+
+  $.ajax({
+    method: "POST",
+    url: quoteUrl,
+    data: quoteData,
+    success: function (response) {
+      console.log("Post Quote Response from Server: " , response);
+    },
+    error: function() {
+      console.log("Error with /api/hairstyle/ID/quotes Post");
+    }
+  });
+
+  $(this).trigger("reset");
+  //Is this the right place for trigger reset?
+}
+
 //////////////////////////////////
 
 
