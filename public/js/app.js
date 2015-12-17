@@ -202,7 +202,20 @@ function handleNewQuoteButtonClick(event){
 
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
   
-  var quoteData = $("form#" + hairStyleID).serialize();
+  var quoteBody = $('#quotebody').val();
+  var quoteVoteCounter = $('#quotevotecounter').val();
+  var quoteAuthor = $('#quoteauthor').val();
+  var quoteDate = $('#quotedate').val();
+
+  var quoteData = {
+    body:quoteBody,
+    voteCounter:quoteVoteCounter,
+    author: quoteAuthor,
+    date: quoteDate
+  };
+  
+  //var quoteData = $("form#" + hairStyleID).serialize();
+  //Not quite working as intended
 
   console.log("This is the quote data!: " , quoteData);
 
