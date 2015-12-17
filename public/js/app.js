@@ -155,15 +155,38 @@ function buildQuotesHtml(quotes){
     "----------------------------" + "<br>" +
     "<div class = 'quote-box' data-quote-id = '" + quotes._id + "'>" +
 
-    "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
-    "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
-    "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
-    "Date: <span class = 'quote-date'>" + quotes.date + "</span>" + "<br>" + 
-    "<span class = 'quotes-create-btn'> <button class='btn btn-danger delete-quote'>Delete Quote</button></span>" + "<br>" + 
+      "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
+      "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
+      "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
+      "Date: <span class = 'quote-date'>" + quotes.date + "</span>" + "<br>" + 
+      "<span class = 'quotes-create-btn'> <button class='btn btn-danger delete-quote'>Delete Quote</button></span>" + "<br>" + 
+
+    "</div>" +
 
     "<!-- End Quote Entry --->";
   });
   return quotesHtml;
+}
+
+function handleDeleteQuoteButton(){
+  console.log ("Delete Quote Button was pressed!");
+
+  //event.preventDefault();
+  var hairStyleID = $(this).parents().parents('.hairstyle-box').data('hairstyle-id');
+
+  var quoteID = $(this).parents('.quote-box').data('quote-id');
+  console.log("Hairstyle Box ID: ", hairStyleID);
+  console.log("Quote ID: " , quoteID);
+  
+  // $.ajax({
+  //   method: 'DELETE',
+  //   url:("/api/hairstyle/" + hairStyleID),
+  //   success: function() {
+  //     console.log("Deleted!");
+  //     $("[data-hairstyle-id=" + hairStyleID + "]").remove();
+  //   }
+  // });
+
 }
 
 function handleNewQuoteButtonClick(){
@@ -193,9 +216,7 @@ function handleNewQuoteButtonClick(){
   //Is this the right place for trigger reset?
 }
 
-function handleDeleteQuoteButton(){
-  console.log ("Delete Quote Button was pressed!");
-}
+
 
 //////////////////////////////////
 
