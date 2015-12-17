@@ -265,6 +265,9 @@ function generateHairStyleHtml(hairstyle) {
   "<div class = 'hairstyle-box' data-hairstyle-id = '" + hairstyle._id + "'>" +
 
     "<!-- Pictures -->" +
+
+    buildPicHtml(hairstyle.pics) +
+
     "<!-- End of Pictures Pictures -->" +
 
 
