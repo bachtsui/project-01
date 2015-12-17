@@ -263,25 +263,25 @@ function handleNewPicButtonClick(event){
 
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
 
-  var pictureData = $(this).parents('.picture-form').serialize();
+  var pictureData = $(this).parents('.pictures-form').serialize();
   
   console.log("Picture Data: ", pictureData);
 
   var pictureUrl = '/api/hairstyle/' + hairStyleID + '/pictures';
   console.log('pictures being added to ' , pictureUrl, 'with data ', pictureData);
 
-  $.ajax({
-    method: "POST",
-    url: pictureUrl,
-    data: pictureData,
-    success: function (response) {
-      console.log("Post Picture Response from Server: " , response);
-    },
-    error: function() {
-      console.log("Error with /api/hairstyle/ID/pictures Post");
-    }
-  });
-  $(this).trigger("reset");
+  // $.ajax({
+  //   method: "POST",
+  //   url: pictureUrl,
+  //   data: pictureData,
+  //   success: function (response) {
+  //     console.log("Post Picture Response from Server: " , response);
+  //   },
+  //   error: function() {
+  //     console.log("Error with /api/hairstyle/ID/pictures Post");
+  //   }
+  // });
+  // $(this).trigger("reset");
 }
 
 //////////////////////////////////
