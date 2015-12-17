@@ -260,29 +260,25 @@ function handleNewPicButtonClick(event){
 
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
 
-  var pictureData = $(this).parents('.quotes-form').serialize();
-  ///////////////////////
-  console.log("QuoteData: ", quoteData);
+  var pictureData = $(this).parents('.picture-form').serialize();
+  
+  console.log("Picture Data: ", pictureData);
 
-  console.log("This is the quote data!: " , quoteData);
-
-  var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quotes';
-  console.log('quotes being added to ' , quoteUrl, 'with data ', quoteData);
+  var pictureUrl = '/api/hairstyle/' + hairStyleID + '/pictures';
+  console.log('pictures being added to ' , pictureUrl, 'with data ', pictureData);
 
   $.ajax({
     method: "POST",
-    url: quoteUrl,
-    data: quoteData,
+    url: pictureUrl,
+    data: pictureData,
     success: function (response) {
-      console.log("Post Quote Response from Server: " , response);
+      console.log("Post Picture Response from Server: " , response);
     },
     error: function() {
-      console.log("Error with /api/hairstyle/ID/quotes Post");
+      console.log("Error with /api/hairstyle/ID/pictures Post");
     }
   });
-
   $(this).trigger("reset");
-  //Is this the right place for trigger reset?
 }
 
 //////////////////////////////////
@@ -326,6 +322,17 @@ function generateHairStyleHtml(hairstyle) {
     "</form>" +
 
     "<!-- End of Quotes Forms -->" +
+
+    "<!-- Picture Form -->" +
+
+    "<form class='form-group pictures-form' data-hairstyle-id ='" + hairstyle._id + "'>" +
+      "<label>" +
+          "Picture URL: <input type='text' class= 'picturebody' name ='url'></textarea><br>" +
+      "</label>" + "<br>" +
+      "<span class = 'picture-create-btn'> <button class='btn btn-primary add-picture'>Add Picture</button></span>" +
+    "</form>" +
+
+    "<!-- End of Picture Form -->" +
 
     "<!-- HairStyle Buttons-->" +
 
