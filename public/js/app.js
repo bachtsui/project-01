@@ -234,7 +234,24 @@ function handleNewQuoteButtonClick(event){
 
 ////////////Picture Functions////////////
 
+function buildPicHtml(pictures){
+  console.log("rendering pictures ", pictures);
 
+  var picturesHtml = "";
+
+  pictures.forEach(function (pictures){ 
+
+    picturesHtml +=  
+    "<!-- One Picture Entry --->" +
+    
+    "<div class = 'picture-box' data-picture-id = '" + pictures._id + "'>" +
+        "<span class = 'picture-url'><img src='" + pictures.url + "'></span><br>" + 
+    "</div>" +
+
+    "<!-- End Picture Entry --->";
+  });
+  return picturesHtml;
+}
 
 //////////////////////////////////
 
@@ -246,6 +263,10 @@ function generateHairStyleHtml(hairstyle) {
   var hairstyleHtml =
   "<!-- One Hairstyle Entry -->" +
   "<div class = 'hairstyle-box' data-hairstyle-id = '" + hairstyle._id + "'>" +
+
+    "<!-- Pictures -->" +
+    "<!-- End of Pictures Pictures -->" +
+
 
     "Name: <span class = 'hairstyle-name'>" + hairstyle.name + "</span>" + "<br>" +
     "Growth Time: <span class = 'hairstyle-growthtime'>" + hairstyle.growthTime + "</span>" + "<br>" +
