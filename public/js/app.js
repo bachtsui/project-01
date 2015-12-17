@@ -2,21 +2,23 @@ $(document).ready(function(){
   console.log('Sanity Check: app.js loaded!');
 
   //READS ALL HAIRSTYLE ENTRIES ONTO THE PAGE
-  $.ajax({
-  	method:"GET",
-  	url:"/api",
-  	success: function (response){
-  		console.log ("GET /api is working!");
+  readAllHairStyleEntry();
 
-      response.forEach(function(hairstyle) {
-        renderHairStyle(hairstyle);
-      });
-  	},
+  // $.ajax({
+  // 	method:"GET",
+  // 	url:"/api",
+  // 	success: function (response){
+  // 		console.log ("GET /api is working!");
 
-  	error: function(){
-  		console.log("Error with /api GET");
-  	}
-  });
+  //     response.forEach(function(hairstyle) {
+  //       renderHairStyle(hairstyle);
+  //     });
+  // 	},
+
+  // 	error: function(){
+  // 		console.log("Error with /api GET");
+  // 	}
+  // });
 
   //CREATE A NEW HAIRSTYLE ENTRY
   $("#hairstyle-form").on("submit", function (event){ 
@@ -84,6 +86,24 @@ $(document).ready(function(){
 function getHairStyleEntryById(id) {
   return $("[data-hairstyle-id=" + id + "]");
   //I might need some explanation on this
+}
+
+function readAllHairStyleEntry() {
+    $.ajax({
+    method:"GET",
+    url:"/api",
+    success: function (response){
+      console.log ("GET /api is working!");
+
+      response.forEach(function(hairstyle) {
+        renderHairStyle(hairstyle);
+      });
+    },
+
+    error: function(){
+      console.log("Error with /api GET");
+    }
+  });
 }
 
 function handleEditHairStyleClick(event) {
@@ -262,7 +282,7 @@ function generateHairStyleHtml(hairstyle) {
             "Vote Counter: <input type='number' class= 'quotevotecounter' name ='voteCounter'>" + "<br>" +
             "Author: <input type='text' class= 'quoteauthor' name ='author'>" + "<br>" +
             "Date: <input type='text' class= 'quotedate' name ='date'>" + "<br>" +
-      "</label>" +
+      "</label>" + "<br>" +
       "<span class = 'quotes-create-btn'> <button class='btn btn-primary add-quote'>Add Quote</button></span>" +
     "</form>" +
 
@@ -288,3 +308,8 @@ function renderHairStyle (hairstyle){
 
   $("#hairStyle").append(html);
 }
+
+
+
+
+
