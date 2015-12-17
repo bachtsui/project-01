@@ -74,11 +74,18 @@ $(document).ready(function(){
   //CREATE A NEW QUOTE
   $("#hairStyle").on("click", ".add-quote", handleNewQuoteButtonClick);
 
+  //DELETE A QUOTE
+  $("#hairStyle").on("click", ".delete-quote", handleDeleteQuoteButton);
+
 });
 
 function getHairStyleEntryById(id) {
   return $("[data-hairstyle-id=" + id + "]");
   //I might need some explanation on this
+}
+
+function getQuoteEntryById(id){
+  return $("[data-quote-id =" + id +"]");
 }
 
 function handleEditHairStyleClick(event) {
@@ -128,6 +135,8 @@ function handleSaveChangesClick(event) {
   });
 }
 
+///////////Quote Functions///////////////////
+
 function buildQuotesHtml(quotes){
   console.log("rendering quotes ", quotes);
 
@@ -144,11 +153,13 @@ function buildQuotesHtml(quotes){
     "<!-- One Quote Entry --->" +
     
     "----------------------------" + "<br>" +
+    "<div class = 'quote-box' data-quote-id = '" + quotes._id + "'>" +
 
     "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
     "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
     "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
     "Date: <span class = 'quote-date'>" + quotes.date + "</span>" + "<br>" + 
+    "<span class = 'quotes-create-btn'> <button class='btn btn-danger delete-quote'>Delete Quote</button></span>" + "<br>" + 
 
     "<!-- End Quote Entry --->";
   });
@@ -177,7 +188,17 @@ function handleNewQuoteButtonClick(){
       console.log("Error with /api/hairstyle/ID/quotes Post");
     }
   });
+
+  //$(this).trigger("reset");
+  //Is this the right place for trigger reset?
 }
+
+function handleDeleteQuoteButton(){
+  console.log ("Delete Quote Button was pressed!");
+}
+
+//////////////////////////////////
+
 
 //We'll use this function to create one hairstyle entry on the page
 function generateHairStyleHtml(hairstyle) {
