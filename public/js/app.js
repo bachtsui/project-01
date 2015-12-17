@@ -115,6 +115,8 @@ function handleEditHairStyleClick(event) {
 }
 
 function handleSaveChangesClick(event) {
+  event.preventDefault();
+  
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
   var $hairStyleEntry = getHairStyleEntryById(hairStyleID);
 
@@ -168,7 +170,9 @@ function buildQuotesHtml(quotes){
   return quotesHtml;
 }
 
-function handleDeleteQuoteButton(){
+function handleDeleteQuoteButton(event){
+  event.preventDefault();
+
   console.log ("Delete Quote Button was pressed!");
 
   //event.preventDefault();
@@ -178,18 +182,20 @@ function handleDeleteQuoteButton(){
   console.log("Hairstyle Box ID: ", hairStyleID);
   console.log("Quote ID: " , quoteID);
   
-  // $.ajax({
-  //   method: 'DELETE',
-  //   url:("/api/hairstyle/" + hairStyleID),
-  //   success: function() {
-  //     console.log("Deleted!");
-  //     $("[data-hairstyle-id=" + hairStyleID + "]").remove();
-  //   }
-  // });
+  $.ajax({
+    method: 'DELETE',
+    url:("/api/hairstyle/" + hairStyleID + "/quotes/" + quoteID),
+    // /api/hairstyle/:hairstyleId/quotes
+    success: function() {
+      console.log("Deleted!");
+      $("[data-quote-id =" + quoteID + "]").remove();
+    }
+  });
 
 }
 
-function handleNewQuoteButtonClick(){
+function handleNewQuoteButtonClick(event){
+  event.preventDefault();
 
   console.log("Quote Button was pressed!");
 

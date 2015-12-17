@@ -71,6 +71,8 @@ app.delete("/api/hairstyle/:id", function deleteHairStyle (request, response){
 });
 
 app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
+	//FIX THIS ENDPOINT TO HAVE PARITY WITH QUOTE API ENDPOINTS
+
 	//console.log("updated id: " , request.params.id);
 	//console.log("received body: ", request.body);
 
@@ -89,7 +91,7 @@ app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
 ////////////QUOTE API ENDPOINTS////////////////
 
 
-app.post('/api/hairstyle/:hairstyleId/quotes', function quotesCreate(request, response){
+app.post('/api/hairstyle/:hairstyleId/quotes', function createQuote (request, response){
 	console.log('quote body', request.body);
 
 	db.hairStyle.findOne({_id: request.params.hairstyleId}, function (err, hairstyle){
@@ -102,6 +104,16 @@ app.post('/api/hairstyle/:hairstyleId/quotes', function quotesCreate(request, re
 			console.log('hairstyle with new quote: ', savedHairStyle);
 			response.json(quote);
 		});
+	});
+});
+
+app.delete("/api/hairstyle/:hairstyleId/quotes/:quoteId", function deleteQuote (request, response){
+	//console.log("ID being deleted: " , request.params.id);
+	
+	db.hairStyle.quotes.remove({_id: request.params.id}, function (err){
+	if (err){return console.log(err);}
+	console.log("Removed Entry ID= " + request.params.id + "done!");
+	response.status(200).send(); //it was ok!
 	});
 });
  /**********
