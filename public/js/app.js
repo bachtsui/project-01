@@ -79,13 +79,11 @@ $(document).ready(function(){
 
 });
 
+//////////HairStyle Functions//////////////
+
 function getHairStyleEntryById(id) {
   return $("[data-hairstyle-id=" + id + "]");
   //I might need some explanation on this
-}
-
-function getQuoteEntryById(id){
-  return $("[data-quote-id =" + id +"]");
 }
 
 function handleEditHairStyleClick(event) {
@@ -138,6 +136,10 @@ function handleSaveChangesClick(event) {
 }
 
 ///////////Quote Functions///////////////////
+
+function getQuoteEntryById(id){
+  return $("[data-quote-id =" + id +"]");
+}
 
 function buildQuotesHtml(quotes){
   console.log("rendering quotes ", quotes);
@@ -201,21 +203,9 @@ function handleNewQuoteButtonClick(event){
   console.log("Quote Button was pressed!");
 
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
-  
-  var quoteBody = $('#quotebody').val();
-  var quoteVoteCounter = $('#quotevotecounter').val();
-  var quoteAuthor = $('#quoteauthor').val();
-  var quoteDate = $('#quotedate').val();
 
-  var quoteData = {
-    body:quoteBody,
-    voteCounter:quoteVoteCounter,
-    author: quoteAuthor,
-    date: quoteDate
-  };
-  
-  //var quoteData = $("form#" + hairStyleID).serialize();
-  //Not quite working as intended
+  var quoteData = $(this).parents('.quotes-form').serialize();
+  console.log("QuoteData: ", quoteData);
 
   console.log("This is the quote data!: " , quoteData);
 
@@ -234,9 +224,12 @@ function handleNewQuoteButtonClick(event){
     }
   });
 
-  //$(this).trigger("reset");
+  $(this).trigger("reset");
   //Is this the right place for trigger reset?
 }
+
+
+////////////Picture Functions////////////
 
 
 
@@ -265,14 +258,13 @@ function generateHairStyleHtml(hairstyle) {
 
     "<form class='form-group quotes-form' data-hairstyle-id ='" + hairstyle._id + "'>" +
       "<label>" +
-            "Body: <textarea input type='text' id= 'quotebody' name ='body'></textarea>" + "<br>" +
-            "Vote Counter: <input type='number' id= 'quotevotecounter' name ='voteCounter'>" + "<br>" +
-            "Author: <input type='text' id= 'quoteauthor' name ='author'>" + "<br>" +
-            "Date: <input type='text' id= 'quotedate' name ='date'>" + "<br>" +
+            "Body: <textarea input type='text' class= 'quotebody' name ='body'></textarea>" + "<br>" +
+            "Vote Counter: <input type='number' class= 'quotevotecounter' name ='voteCounter'>" + "<br>" +
+            "Author: <input type='text' class= 'quoteauthor' name ='author'>" + "<br>" +
+            "Date: <input type='text' class= 'quotedate' name ='date'>" + "<br>" +
       "</label>" +
+      "<span class = 'quotes-create-btn'> <button class='btn btn-primary add-quote'>Add Quote</button></span>" +
     "</form>" +
-
-    "<span class = 'quotes-create-btn'> <button class='btn btn-primary add-quote'>Add Quote</button></span>" +
 
     "<!-- End of Quotes Forms -->" +
 
