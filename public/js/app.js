@@ -4,22 +4,6 @@ $(document).ready(function(){
   //READS ALL HAIRSTYLE ENTRIES ONTO THE PAGE
   readAllHairStyleEntry();
 
-  // $.ajax({
-  // 	method:"GET",
-  // 	url:"/api",
-  // 	success: function (response){
-  // 		console.log ("GET /api is working!");
-
-  //     response.forEach(function(hairstyle) {
-  //       renderHairStyle(hairstyle);
-  //     });
-  // 	},
-
-  // 	error: function(){
-  // 		console.log("Error with /api GET");
-  // 	}
-  // });
-
   //CREATE A NEW HAIRSTYLE ENTRY
   $("#hairstyle-form").on("submit", function (event){ 
   	event.preventDefault();
@@ -45,7 +29,6 @@ $(document).ready(function(){
 	});
 
 	$(this).trigger("reset");
-	//reset the form
   });
 
   //DELETE A CURRENT HAIRSTYLING
@@ -71,7 +54,6 @@ $(document).ready(function(){
   //EDIT A CURRENT HAIRSTYLING
   $("#hairStyle").on("click", ".edit-hairstyle", handleEditHairStyleClick);
   $("#hairStyle").on("click", ".put-hairstyle", handleSaveChangesClick);
-
 
   //CREATE A NEW QUOTE
   $("#hairStyle").on("click", ".add-quote", handleNewQuoteButtonClick);
