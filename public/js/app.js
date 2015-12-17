@@ -161,29 +161,7 @@ function handleNewQuoteButtonClick(){
 
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
   
-
-  var quoteBody = $('#quotebody').val();
-  var quoteVoteCounter = $('#quotevotecounter').val();
-  var quoteAuthor = $('#quoteauthor').val();
-  var quoteDate = $('#quotedate').val();
-
-  //console.log($('#quotes-form').serialize());
-  console.log (quoteBody);
-
-  var quoteData = {
-    body:quoteBody,
-    voteCounter:quoteVoteCounter,
-    author: quoteAuthor,
-    date: quoteDate
-  };
-
-  // var quoteData = {
-  //   body:"experiment",
-  //   voteCounter:1,
-  //   author: "quoteAuthor",
-  //   date: "quoteDate"
-  // };
-  //Hard coded data works
+  var quoteData = $('#quotes-form').serialize();
 
   var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quotes';
   console.log('quotes being added to ' , quoteUrl, 'with data ', quoteData);
