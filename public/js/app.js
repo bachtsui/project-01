@@ -279,6 +279,8 @@ function handleNewPicButtonClick(event){
     data: pictureData,
     success: function (response) {
       console.log("Post Picture Response from Server: " , response);
+      $("#hairStyle").empty();
+      readAllHairStyleEntry();
     },
     error: function() {
       console.log("Error with /api/hairstyle/ID/pictures Post");
