@@ -20,3 +20,12 @@ Link
 heroku:
 https://serene-river-7941.herokuapp.com/
 
+To Add:
+
+Form Validation
+Delete for Images (Giving CRD)
+Update for Quotes (Giving CRUD)
+
+Styling
+Need to style where only images are visible on the front
+When an image is clicked a modal with the information of that image pops up

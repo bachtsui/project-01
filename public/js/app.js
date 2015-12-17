@@ -194,7 +194,6 @@ function handleDeleteQuoteButton(event){
   $.ajax({
     method: 'DELETE',
     url:("/api/hairstyle/" + hairStyleID + "/quotes/" + quoteID),
-    // /api/hairstyle/:hairstyleId/quotes
     success: function() {
       console.log("Deleted!");
       $("[data-quote-id =" + quoteID + "]").remove();
@@ -290,6 +289,9 @@ function handleNewPicButtonClick(event){
 //We'll use this function to create one hairstyle entry on the page
 function generateHairStyleHtml(hairstyle) {
   console.log("rendering hairstyle: ", hairstyle);
+
+  // Am I Kawaii?
+  //  -Daniel Lwo
 
   var hairstyleHtml =
   "<!-- One Hairstyle Entry -->" +
