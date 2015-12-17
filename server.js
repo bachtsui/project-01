@@ -109,12 +109,22 @@ app.post('/api/hairstyle/:hairstyleId/quotes', function createQuote (request, re
 
 app.delete("/api/hairstyle/:hairstyleId/quotes/:quoteId", function deleteQuote (request, response){
 	//console.log("ID being deleted: " , request.params.id);
-	
-	db.hairStyle.quotes.remove({_id: request.params.id}, function (err){
-	if (err){return console.log(err);}
-	console.log("Removed Entry ID= " + request.params.id + "done!");
-	response.status(200).send(); //it was ok!
+	var hairStyleId = request.params.hairstyleId;
+	var quoteId = request.params.quoteId;
+
+	console.log(request.params);
+	console.log("HSID from app.delete" , hairStyleId);
+	console.log("QuoteID from app.delete" , quoteId);
+
+	db.hairStyle.findOne({_id: hairStyleId}, function (err, foundHairStyle){
+
 	});
+
+	// db.hairStyle.quotes.remove({_id: request.params.id}, function (err){
+	// if (err){return console.log(err);}
+	// console.log("Removed Entry ID= " + request.params.id + "done!");
+	// response.status(200).send(); //it was ok!
+	// });
 });
  /**********
  * SERVER *
