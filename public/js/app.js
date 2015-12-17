@@ -40,7 +40,7 @@ function readAllHairStyleEntry() {
       console.log ("GET /api is working!");
 
       response.forEach(function(hairstyle) {
-        renderHairStyle(hairstyle);
+      renderHairStyle(hairstyle);
       });
     },
 
@@ -67,6 +67,8 @@ function createHairStyleEntry() {
     data: formData,
     success: function (response) {
       console.log("Post Response from Server: " , response);
+      $("#hairStyle").empty();
+      readAllHairStyleEntry();
     },
     error: function() {
       console.log("Error with /api/hairstyle Post");
@@ -223,6 +225,8 @@ function handleNewQuoteButtonClick(event){
     data: quoteData,
     success: function (response) {
       console.log("Post Quote Response from Server: " , response);
+      $("#hairStyle").empty();
+      readAllHairStyleEntry();
     },
     error: function() {
       console.log("Error with /api/hairstyle/ID/quotes Post");
@@ -360,7 +364,22 @@ function renderHairStyle (hairstyle){
   $("#hairStyle").append(html);
 }
 
+///////For Class Presentation//////////
 
+function generateSchedule(){
+  var scheduleHtml =
+  "<!--Schedule-->" +
+
+  "<div class = schedule>" +
+    "<ul>" +
+      "<li> [9:00] Breon Walked Into Class </li>" + 
+    "</ul>" +
+  "</div>" +
+
+  "<!--End of Schedule-->";
+
+  return scheduleHtml;
+}
 
 
 
