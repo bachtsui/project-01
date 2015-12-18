@@ -24,6 +24,8 @@ To Add:
 
 Form Validation
 
+On create, entries keep their same position
+
 Delete for Images (Giving CRD)
 Update for Quotes (Giving CRUD)
 
