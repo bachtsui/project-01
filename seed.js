@@ -6,15 +6,33 @@ var db = require("./models"); //var db is importing everything models is exporti
 var hairStyleList = [];
 
 hairStyleList.push({
-	name: "ASDF123",
-	growthTime:"3 Months",
-	description: "Noticeable by pointyness"
+	name: "Handlebar Mustache",
+	growthTime:"3 Beard Months",
+	description: "A simple yet refined mustache."
 });
 
 hairStyleList.push({
-	name: "QWERTY456",
-	growthTime:"6 Months",
-	description: "Justin wears this beard"
+	name: "Lumberjack Beard",
+	growthTime:"1 Beard Year",
+	description: "Beefy like Mom's Famous Beef Stew."
+});
+
+hairStyleList.push({
+	name: "Friendly Mutton Chops",
+	growthTime:"8 Beard Months",
+	description: "It's only 'Friendly' when it connects to your mustache."
+});
+
+hairStyleList.push({
+	name: "Fu Manchu Moustache",
+	growthTime:"2 Beard Years + 40 Years of Wisdom",
+	description: "If they're Asian and have a Fu Manchu, they're evil."
+});
+
+hairStyleList.push({
+	name: "Applestache",
+	growthTime:"2 Beard Months",
+	description: "A stache that can be worn by everyone"
 });
 
 

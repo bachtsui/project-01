@@ -23,6 +23,7 @@ https://serene-river-7941.herokuapp.com/
 To Add:
 
 Form Validation
+
 Delete for Images (Giving CRD)
 Update for Quotes (Giving CRUD)
 
