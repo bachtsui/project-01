@@ -12,3 +12,7 @@ img{
 	max-width:250px;
 	max-height:250px;
 }
+
+li{
+	font-weight:bold;
+}

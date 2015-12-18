@@ -23,6 +23,8 @@ $(document).ready(function(){
   //CREATE A PICTURE
   $("#hairStyle").on("click", ".add-picture", handleNewPicButtonClick);
 
+  //////For Class Presentation/////////////
+  $("#breonButton").on("click", renderSchedule);
 });
 
 //////////HairStyle Functions//////////////
@@ -373,14 +375,29 @@ function generateSchedule(){
   "<!--Schedule-->" +
 
   "<div class = schedule>" +
+    "<h3> Explanation of Absence de Style: </h3>" +
+    "<h4> A Day of Breon's Life, December 15th, 2015</h4>" +
     "<ul>" +
-      "<li> [9:00] Breon Walked Into Class </li>" + 
+      "<li> [9:00 AM] Breon Walked Into Class. </li>" + 
+      "<li> [10:17 AM] Breon looked at Alex and gave him the head shake.</li>" +
+      "<li> [11:36 AM] I hope Breon-senpai notices me today.</li>" +
+      "<li> [12:15 PM] Breon came over, shook my hand, and commented how warm it was. He noticed me!</li>" +
+      "<li> [1:45 PM] I gave Breon a cookie and told him 'It's not like I like you or anything.'</li>" +
+      "<li> [2:55 PM] Breon jumped up for joy.</li>" +
+      "<li> [3:48 PM] Breon commented on how much he was learning.</li>" +
+      "<li> [4:12 PM] Breon got up and started doing the chicken dance.</li>" +
+      "<li> [5:30 PM] Breon left, I'm sad now." +
     "</ul>" +
   "</div>" +
 
   "<!--End of Schedule-->";
 
   return scheduleHtml;
+}
+
+function renderSchedule(){
+  var html = generateSchedule;
+  $("#breon").append(html);
 }
 
 
