@@ -60,7 +60,7 @@ var muttonchopQuote = [
 	{ 
 	body: "'Ah your sideburns connect with your mustache, you must be friendly.'",
 	voteCounter:0,
-	author: "Last Words of a Foolish Man",
+	author: "John McJoey",
 	date: "October 31st, 1985",
 	}
 ];
@@ -95,15 +95,36 @@ var handlebarPic = [
 	}
 ];
 
-var handlebarPic = [
+var lumberjackPic = [
 	{
-		url:"./images/handlebar/HB_mustache.jpg"
+		url:"./images/lumberjack/lumberjack.jpg"
+	}
+];
+
+var muttonchopPic = [
+	{
+		url:"./images/muttonchop/muttonchopOne.jpg"
+	}
+];
+
+var fumanchuPic = [
+	{
+		url:"./images/fumanchu/fumanchu.jpg"
+	}
+];
+
+var applestachePic = [
+	{
+		url:"./images/applestache/applestache.jpg"
 	}
 ];
 
 
-
 hairStyleList[0].pics = handlebarPic;
+hairStyleList[1].pics = lumberjackPic;
+hairStyleList[2].pics = muttonchopPic;
+hairStyleList[3].pics = fumanchuPic;
+hairStyleList[4].pics = applestachePic;
 
 
 db.hairStyle.remove({}, function(err, hairStyle){

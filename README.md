@@ -27,6 +27,9 @@ Form Validation
 Delete for Images (Giving CRD)
 Update for Quotes (Giving CRUD)
 
+Vote counter for quotes, allowing quotes to be upvoted to appear higher
+up on the list.
+
 Styling
 Need to style where only images are visible on the front
 When an image is clicked a modal with the information of that image pops up
