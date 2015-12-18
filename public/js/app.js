@@ -298,7 +298,7 @@ function handleNewPicButtonClick(event){
 function generateHairStyleHtml(hairstyle) {
   console.log("rendering hairstyle: ", hairstyle);
 
-  // Am I Kawaii?
+  // I'm the cutest!
   //  -Daniel Lwo
 
   var hairstyleHtml =
