@@ -15,6 +15,34 @@ Technologies Used
 Javascript, jQuery
 MongoDB
 
+Three Lines of Code I'm Proud Of
+
+"<div class = 'hairstyle-box' data-hairstyle-id = '" + hairstyle._id + "'>"
+on app.js
+
+It's simple but once I understood the importance of this code, Update and Delete
+really came together. Nathan pointed out to me that you need to grab the ID of 
+an entry from your HTML code. It made me realize that fundamentally, I missed a 
+concept while doing my Tunely lab, and it good that I understand why the HTML
+was formatted a certain way in the Tunely lab.
+
+var hairStyleID = $(this).parents().parents('.hairstyle-box').data('hairstyle-id');
+on app.js
+
+The method parents was something I was conceptually shaky on. Once I wrote this line 
+of code out and everything worked, it was easy for me to visualize and understand why it
+worked. I could go through my HTML and see which nodes I was jumping up to and where
+I was drilling down to. Big shoutouts to Daniel Lwo, who conceptually went over it with me.
+
+var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quotes';
+on app.js
+
+Again pretty simple, but it was really satifying for me to see that I got
+my .ajax POST route set up correctly. I remember .ajax was something I struggled
+on conceptually two weeks ago, but now I feel like I have a solid understanding 
+of .ajax and what it does.
+
+
 Link
 
 heroku:
