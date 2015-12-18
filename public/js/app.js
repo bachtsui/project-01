@@ -5,51 +5,10 @@ $(document).ready(function(){
   readAllHairStyleEntry();
 
   //CREATE A NEW HAIRSTYLE ENTRY
-  $("#hairstyle-form").on("submit", function (event){ 
-  	event.preventDefault();
-  	//prevents the default function of click
-
-    console.log ("You clicked the button");
-
-	  var formData = $(this).serialize();
-  	//The data from the form will be serialized
-  	
-  	console.log("Your form data client side: " + formData);
-
-	$.ajax({
-		method: "POST",
-		url: "/api/hairstyle",
-		data: formData,
-		success: function (response) {
-			console.log("Post Response from Server: " , response);
-		},
-		error: function() {
-			console.log("Error with /api/hairstyle Post");
-		}
-	});
-
-	$(this).trigger("reset");
-  });
+  $("#hairstyle-form").on("submit", createHairStyleEntry);
 
   //DELETE A CURRENT HAIRSTYLING
-  $("#hairStyle").on("click", ".delete-hairstyle", function (event){
-  event.preventDefault();
-  //#hairStyle exists and is always listening
-  //.delete-hairstyle is created already and now can be clicked on
-  
-  console.log("You pressed the delete button");
-  var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
-  console.log("HSD: " , hairStyleID);
-        //write body to check for ID
-    $.ajax({
-      method: 'DELETE',
-      url:("/api/hairstyle/" + hairStyleID),
-      success: function() {
-        console.log("Deleted!");
-        $("[data-hairstyle-id=" + hairStyleID + "]").remove();
-      }
-    });
-  });
+  $("#hairStyle").on("click", ".delete-hairstyle", deleteHairStyleEntry);
 
   //EDIT A CURRENT HAIRSTYLING
   $("#hairStyle").on("click", ".edit-hairstyle", handleEditHairStyleClick);
@@ -61,6 +20,11 @@ $(document).ready(function(){
   //DELETE A QUOTE
   $("#hairStyle").on("click", ".delete-quote", handleDeleteQuoteButton);
 
+  //CREATE A PICTURE
+  $("#hairStyle").on("click", ".add-picture", handleNewPicButtonClick);
+
+  //////For Class Presentation/////////////
+  $("#breonButton").on("click", renderSchedule);
 });
 
 //////////HairStyle Functions//////////////
@@ -78,7 +42,7 @@ function readAllHairStyleEntry() {
       console.log ("GET /api is working!");
 
       response.forEach(function(hairstyle) {
-        renderHairStyle(hairstyle);
+      renderHairStyle(hairstyle);
       });
     },
 
@@ -86,6 +50,50 @@ function readAllHairStyleEntry() {
       console.log("Error with /api GET");
     }
   });
+}
+
+function createHairStyleEntry() {
+    event.preventDefault();
+    //prevents the default function of click
+
+    console.log ("You clicked the button");
+
+    var formData = $(this).serialize();
+    //The data from the form will be serialized
+    
+    console.log("Your form data client side: " + formData);
+
+  $.ajax({
+    method: "POST",
+    url: "/api/hairstyle",
+    data: formData,
+    success: function (response) {
+      console.log("Post Response from Server: " , response);
+      $("#hairStyle").empty();
+      readAllHairStyleEntry();
+    },
+    error: function() {
+      console.log("Error with /api/hairstyle Post");
+    }
+  });
+  $(this).trigger("reset");
+}
+
+function deleteHairStyleEntry() {
+  event.preventDefault();
+  
+  console.log("You pressed the delete button");
+  var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+  console.log("HSD: " , hairStyleID);
+  
+    $.ajax({
+      method: 'DELETE',
+      url:("/api/hairstyle/" + hairStyleID),
+      success: function() {
+        console.log("Deleted!");
+        $("[data-hairstyle-id=" + hairStyleID + "]").remove();
+      }
+    });
 }
 
 function handleEditHairStyleClick(event) {
@@ -190,7 +198,6 @@ function handleDeleteQuoteButton(event){
   $.ajax({
     method: 'DELETE',
     url:("/api/hairstyle/" + hairStyleID + "/quotes/" + quoteID),
-    // /api/hairstyle/:hairstyleId/quotes
     success: function() {
       console.log("Deleted!");
       $("[data-quote-id =" + quoteID + "]").remove();
@@ -220,6 +227,8 @@ function handleNewQuoteButtonClick(event){
     data: quoteData,
     success: function (response) {
       console.log("Post Quote Response from Server: " , response);
+      $("#hairStyle").empty();
+      readAllHairStyleEntry();
     },
     error: function() {
       console.log("Error with /api/hairstyle/ID/quotes Post");
@@ -233,7 +242,54 @@ function handleNewQuoteButtonClick(event){
 
 ////////////Picture Functions////////////
 
+function buildPicHtml(pictures){
+  console.log("rendering pictures ", pictures);
 
+  var picturesHtml = "";
+
+  pictures.forEach(function (pictures){ 
+
+    picturesHtml +=  
+    "<!-- One Picture Entry --->" +
+    
+    "<div class = 'picture-box' data-picture-id = '" + pictures._id + "'>" +
+        "<span class = 'picture-url'><img src='" + pictures.url + "'></span><br>" + 
+    "</div>" +
+
+    "<!-- End Picture Entry --->";
+  });
+  return picturesHtml;
+}
+
+function handleNewPicButtonClick(event){
+  event.preventDefault();
+
+  console.log("Picture Button was pressed!");
+
+  var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+
+  var pictureData = $(this).parents('.pictures-form').serialize();
+  
+  console.log("Picture Data: ", pictureData);
+
+  var pictureUrl = '/api/hairstyle/' + hairStyleID + '/pictures';
+  console.log('pictures being added to ' , pictureUrl, 'with data ', pictureData);
+
+  $.ajax({
+    method: "POST",
+    url: pictureUrl,
+    data: pictureData,
+    success: function (response) {
+      console.log("Post Picture Response from Server: " , response);
+      $("#hairStyle").empty();
+      readAllHairStyleEntry();
+    },
+    error: function() {
+      console.log("Error with /api/hairstyle/ID/pictures Post");
+    }
+  });
+  $(this).trigger("reset");
+}
 
 //////////////////////////////////
 
@@ -242,9 +298,19 @@ function handleNewQuoteButtonClick(event){
 function generateHairStyleHtml(hairstyle) {
   console.log("rendering hairstyle: ", hairstyle);
 
+  // Am I Kawaii?
+  //  -Daniel Lwo
+
   var hairstyleHtml =
   "<!-- One Hairstyle Entry -->" +
   "<div class = 'hairstyle-box' data-hairstyle-id = '" + hairstyle._id + "'>" +
+
+    "<!-- Pictures -->" +
+
+    buildPicHtml(hairstyle.pics) +
+
+    "<!-- End of Pictures Pictures -->" +
+
 
     "Name: <span class = 'hairstyle-name'>" + hairstyle.name + "</span>" + "<br>" +
     "Growth Time: <span class = 'hairstyle-growthtime'>" + hairstyle.growthTime + "</span>" + "<br>" +
@@ -270,6 +336,17 @@ function generateHairStyleHtml(hairstyle) {
 
     "<!-- End of Quotes Forms -->" +
 
+    "<!-- Picture Form -->" +
+
+    "<form class='form-group pictures-form' data-hairstyle-id ='" + hairstyle._id + "'>" +
+      "<label>" +
+          "Picture URL: <input type='text' class= 'picturebody' name ='url'></textarea><br>" +
+      "</label>" + "<br>" +
+      "<span class = 'picture-create-btn'> <button class='btn btn-success add-picture'>Add Picture</button></span>" +
+    "</form>" +
+
+    "<!-- End of Picture Form -->" +
+
     "<!-- HairStyle Buttons-->" +
 
     "<span class = 'hairstyle-edit-btn'> <button class='btn btn-info edit-hairstyle'>Edit Hairstyle</button></span>" +
@@ -291,7 +368,37 @@ function renderHairStyle (hairstyle){
   $("#hairStyle").append(html);
 }
 
+///////For Class Presentation//////////
 
+function generateSchedule(){
+  var scheduleHtml =
+  "<!--Schedule-->" +
+
+  "<div class = schedule>" +
+    "<h3> Explanation of Absence de Style: </h3>" +
+    "<h4> A Day of Breon's Life, December 15th, 2015</h4>" +
+    "<ul>" +
+      "<li> [9:00 AM] Breon Walked Into Class. </li>" + 
+      "<li> [10:17 AM] Breon looked at Alex and gave him the head shake.</li>" +
+      "<li> [11:36 AM] I hope Breon-senpai notices me today.</li>" +
+      "<li> [12:15 PM] Breon came over, shook my hand, and commented how warm it was. He noticed me!</li>" +
+      "<li> [1:45 PM] I gave Breon a cookie and told him 'It's not like I like you or anything.'</li>" +
+      "<li> [2:55 PM] Breon jumped up for joy.</li>" +
+      "<li> [3:48 PM] Breon commented on how much he was learning.</li>" +
+      "<li> [4:12 PM] Breon got up and started doing the chicken dance.</li>" +
+      "<li> [5:30 PM] Breon left, I'm sad now." +
+    "</ul>" +
+  "</div>" +
+
+  "<!--End of Schedule-->";
+
+  return scheduleHtml;
+}
+
+function renderSchedule(){
+  var html = generateSchedule;
+  $("#breon").append(html);
+}
 
 
 

@@ -1,7 +1,18 @@
 body {
-  background-color: orange; /* Sanity Check! */
+  background-color: white;
 }
 
 .put-hairstyle{
 	display: none;
+}
+
+img{
+	height:auto;
+	width:auto;
+	max-width:250px;
+	max-height:250px;
+}
+
+li{
+	font-weight:bold;
 }

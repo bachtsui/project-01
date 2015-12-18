@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var PicSchema = new Schema({
 	url: String,
-	caption: String,
-	date:String,
+	// caption: String,
+	// date:String,
 });
 
 var Pic = mongoose.model("Pic", PicSchema);

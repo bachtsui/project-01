@@ -6,54 +6,125 @@ var db = require("./models"); //var db is importing everything models is exporti
 var hairStyleList = [];
 
 hairStyleList.push({
-	name: "ASDF123",
-	growthTime:"3 Months",
-	description: "Noticeable by pointyness"
+	name: "Handlebar Mustache",
+	growthTime:"3 Beard Months",
+	description: "A simple yet refined mustache."
 });
 
 hairStyleList.push({
-	name: "QWERTY456",
-	growthTime:"6 Months",
-	description: "Justin wears this beard"
+	name: "Lumberjack Beard",
+	growthTime:"1 Beard Year",
+	description: "Beefy like Mom's Famous Beef Stew."
+});
+
+hairStyleList.push({
+	name: "Friendly Mutton Chops",
+	growthTime:"8 Beard Months",
+	description: "It's only 'Friendly' when it connects to your mustache."
+});
+
+hairStyleList.push({
+	name: "Fu Manchu Moustache",
+	growthTime:"2 Beard Years + 40 Years of Wisdom",
+	description: "If they're Asian and have a Fu Manchu, they're evil."
+});
+
+hairStyleList.push({
+	name: "Applestache",
+	growthTime:"2 Beard Months",
+	description: "A stache that can be worn by everyone"
 });
 
 
-//Hard coded Quotes list.
-var sampleQuotes = [];
+//Hard Coded Quotes
 
-sampleQuotes.push ({ 
-	body: "What a handsome beard!",
+var handlebarQuote = [
+	{ 
+	body: "'That's a fine mustache, would you fancy a mustache joust?'",
 	voteCounter:0,
-	author: "Mr. X",
-	date: "December 1st, 2015",
-});
+	author: "Sir William the III",
+	date: "March 5th, 1923",
+	}
+];
 
-sampleQuotes.push ({ 
-	body: "I feel the beard",
+var lumberjackQuote = [
+	{ 
+	body: "'By the power of Shamwow, I am not worthy to be in your presence!'",
 	voteCounter:0,
-	author: "Mr. Y",
-	date: "December 3rd, 1998",
-});
+	author: "Barry Manshark",
+	date: "July 23th, 1970",
+	}
+];
 
-var samplePics = [];
+var muttonchopQuote = [
+	{ 
+	body: "'Ah your sideburns connect with your mustache, you must be friendly.'",
+	voteCounter:0,
+	author: "John McJoey",
+	date: "October 31st, 1985",
+	}
+];
 
-samplePics.push({
-	url: "http://vignette3.wikia.nocookie.net/rickandmorty/images/7/70/Snuffles-helmet.jpg/revision/latest?cb=20131212193614",
-	caption: "Nice picture!",
-	date:"December 1, 2015",
-});
+var fumanchuQuote = [
+	{ 
+	body: "'I should have known you'd be behind this, fiendish Dr. Wu.'",
+	voteCounter:0,
+	author: "Black Dynamite",
+	date: "October 16th, 2009",
+	}
+];
 
-samplePics.push({
-	url: "http://d55ohm6038bug.cloudfront.net/June2014-Bojack/images/bojack_contact.png",
-	caption: "What is this?",
-	date:"February 25, 2013",
-});
+var applestacheQuote = [
+	{ 
+	body: "'You don't know what the Applestache is? Everyone knows!'",
+	voteCounter:0,
+	author: "Everyone Ever",
+	date: "December 18th, 2015",
+	}
+];
+
+hairStyleList[0].quotes = handlebarQuote;
+hairStyleList[1].quotes = lumberjackQuote;
+hairStyleList[2].quotes = muttonchopQuote;
+hairStyleList[3].quotes = fumanchuQuote;
+hairStyleList[4].quotes = applestacheQuote;
+
+var handlebarPic = [
+	{
+		url:"./images/handlebar/HB_mustache.jpg"
+	}
+];
+
+var lumberjackPic = [
+	{
+		url:"./images/lumberjack/lumberjack.jpg"
+	}
+];
+
+var muttonchopPic = [
+	{
+		url:"./images/muttonchop/muttonchopOne.jpg"
+	}
+];
+
+var fumanchuPic = [
+	{
+		url:"./images/fumanchu/fumanchu.jpg"
+	}
+];
+
+var applestachePic = [
+	{
+		url:"./images/applestache/applestache.jpg"
+	}
+];
 
 
-hairStyleList.forEach(function(hairstyle){
-	hairstyle.quotes = sampleQuotes;
-	hairstyle.pics = samplePics;
-});
+hairStyleList[0].pics = handlebarPic;
+hairStyleList[1].pics = lumberjackPic;
+hairStyleList[2].pics = muttonchopPic;
+hairStyleList[3].pics = fumanchuPic;
+hairStyleList[4].pics = applestachePic;
 
 
 db.hairStyle.remove({}, function(err, hairStyle){

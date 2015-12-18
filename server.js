@@ -71,7 +71,7 @@ app.delete("/api/hairstyle/:id", function deleteHairStyle (request, response){
 });
 
 app.put("/api/hairstyle/:id", function updateHairStyle (request, response){
-	//FIX THIS ENDPOINT TO HAVE PARITY WITH QUOTE API ENDPOINTS
+	//ENDPOINT LACKS PARITY? Might be bad styling
 
 	//console.log("updated id: " , request.params.id);
 	//console.log("received body: ", request.body);
@@ -127,6 +127,25 @@ app.delete("/api/hairstyle/:hairstyleId/quotes/:id", function deleteQuote (reque
 		}); 
 	});
 });
+
+//////////////PICTURE API ENDPOINT////////////
+
+app.post('/api/hairstyle/:hairstyleId/pictures', function createPicture (request, response){
+	console.log('picture body', request.body);
+
+	db.hairStyle.findOne({_id: request.params.hairstyleId}, function (err, hairstyle){
+		if (err) { console.log('error', err); }
+
+		var picture = new db.Pic(request.body);
+		hairstyle.pics.push(picture);
+		hairstyle.save(function(err, savedHairStyle){
+			if (err) { console.log('error', err); }
+			console.log('hairstyle with new picture: ', savedHairStyle);
+			response.json(picture);
+		});
+	});
+});
+
  /**********
  * SERVER *
  **********/
