@@ -5,15 +5,17 @@ $(document).ready(function(){
   readAllHairStyleEntry();
 
   //CREATE A NEW HAIRSTYLE ENTRY
-  $("#hairstyle-form").on("submit", function (event){ 
+  $("#hairstyle-form").on("submit", function (event){
   	event.preventDefault();
   	//prevents the default function of click
 
+    // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
     console.log ("You clicked the button");
 
 	  var formData = $(this).serialize();
   	//The data from the form will be serialized
-  	
+
+    // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   	console.log("Your form data client side: " + formData);
 
 	$.ajax({
@@ -21,9 +23,11 @@ $(document).ready(function(){
 		url: "/api/hairstyle",
 		data: formData,
 		success: function (response) {
+      // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
 			console.log("Post Response from Server: " , response);
 		},
 		error: function() {
+      // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
 			console.log("Error with /api/hairstyle Post");
 		}
 	});
@@ -36,9 +40,11 @@ $(document).ready(function(){
   event.preventDefault();
   //#hairStyle exists and is always listening
   //.delete-hairstyle is created already and now can be clicked on
-  
+
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("You pressed the delete button");
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("HSD: " , hairStyleID);
         //write body to check for ID
     $.ajax({
@@ -89,10 +95,12 @@ function readAllHairStyleEntry() {
 }
 
 function handleEditHairStyleClick(event) {
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("You pressed the edit button!");
-  
+
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
-  console.log("HSD from Edit: " , hairStyleID);
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
+  onsole.log("HSD from Edit: " , hairStyleID);
 
   var $hairStyleEntry = getHairStyleEntryById(hairStyleID);
 
@@ -100,6 +108,7 @@ function handleEditHairStyleClick(event) {
   $(this).parent().parent().find('.put-hairstyle').show();
   //first parent moves up to span class, second parent moves to the div class container
 
+  // TODO: Please remove unused and commented-out code from production versions as it will slow down performance. -jc
   // $(this).parent().find('.btn').toggle();
   //doesn't quite work at the moment
 
@@ -143,7 +152,9 @@ function getQuoteEntryById(id){
   return $("[data-quote-id =" + id +"]");
 }
 
+// TODO: Please consider this as another candidate for handlebars client-side.  -jc
 function buildQuotesHtml(quotes){
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("rendering quotes ", quotes);
 
   var quotesHtml = "";
@@ -153,20 +164,20 @@ function buildQuotesHtml(quotes){
   //grab the approriate key from the quote object
   //this should read the quotes onto the page
 
-  quotes.forEach(function (quotes){ 
+  quotes.forEach(function (quotes){
 
-    quotesHtml +=  
+    quotesHtml +=
     "<!-- One Quote Entry --->" +
-    
-    
+
+
     "<div class = 'quote-box' data-quote-id = '" + quotes._id + "'>" +
 
       "----------------------------" + "<br>" +
-      "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" + 
-      "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" + 
-      "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" + 
-      "Date: <span class = 'quote-date'>" + quotes.date + "</span>" + "<br>" + 
-      "<span class = 'quotes-create-btn'> <button class='btn btn-danger delete-quote'>Delete Quote</button></span>" + "<br>" + 
+      "Body:  <span class = 'quote-body'>" + quotes.body + "</span>" + "<br>" +
+      "Vote Counter: <span class = 'quote-voteCounter'>" + quotes.voteCounter + "</span>" +  "<br>" +
+      "Author: <span class = 'quote-author'>" + quotes.author + "</span>" + "<br>" +
+      "Date: <span class = 'quote-date'>" + quotes.date + "</span>" + "<br>" +
+      "<span class = 'quotes-create-btn'> <button class='btn btn-danger delete-quote'>Delete Quote</button></span>" + "<br>" +
 
     "</div>" +
 
@@ -177,41 +188,47 @@ function buildQuotesHtml(quotes){
 
 function handleDeleteQuoteButton(event){
   event.preventDefault();
-
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log ("Delete Quote Button was pressed!");
 
   //event.preventDefault();
   var hairStyleID = $(this).parents().parents('.hairstyle-box').data('hairstyle-id');
 
   var quoteID = $(this).parents('.quote-box').data('quote-id');
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("Hairstyle Box ID: ", hairStyleID);
   console.log("Quote ID: " , quoteID);
-  
+
   $.ajax({
     method: 'DELETE',
     url:("/api/hairstyle/" + hairStyleID + "/quotes/" + quoteID),
     // /api/hairstyle/:hairstyleId/quotes
     success: function() {
+      // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
       console.log("Deleted!");
       $("[data-quote-id =" + quoteID + "]").remove();
     }
   });
 
 }
-
+// TODO: Thank you for breaking down your html string construction and api construction into easy to digest chunks. I love this! -jc
 function handleNewQuoteButtonClick(event){
   event.preventDefault();
 
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("Quote Button was pressed!");
 
   var hairStyleID = $(this).parents('.hairstyle-box').data('hairstyle-id');
 
   var quoteData = $(this).parents('.quotes-form').serialize();
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("QuoteData: ", quoteData);
 
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("This is the quote data!: " , quoteData);
 
   var quoteUrl = '/api/hairstyle/' + hairStyleID + '/quotes';
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log('quotes being added to ' , quoteUrl, 'with data ', quoteData);
 
   $.ajax({
@@ -219,9 +236,11 @@ function handleNewQuoteButtonClick(event){
     url: quoteUrl,
     data: quoteData,
     success: function (response) {
+      // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
       console.log("Post Quote Response from Server: " , response);
     },
     error: function() {
+      // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
       console.log("Error with /api/hairstyle/ID/quotes Post");
     }
   });
@@ -238,8 +257,10 @@ function handleNewQuoteButtonClick(event){
 //////////////////////////////////
 
 
+// TODO: Consider implementing handlebars to tackle this beast of an html string. -jc
 //We'll use this function to create one hairstyle entry on the page
 function generateHairStyleHtml(hairstyle) {
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("rendering hairstyle: ", hairstyle);
 
   var hairstyleHtml =
@@ -284,14 +305,11 @@ function generateHairStyleHtml(hairstyle) {
   return hairstyleHtml;
 }
 
+// TODO: this function is unecessary. You could add the append call from within generateHairStyleHtml(), couldn't you? -jc
 function renderHairStyle (hairstyle){
   var html = generateHairStyleHtml(hairstyle);
+  // TODO: Please remove unecessary console.logs from production versions as it will slow down performance. -jc
   console.log("rendering hairstyle: ", hairstyle);
 
   $("#hairStyle").append(html);
 }
-
-
-
-
-
